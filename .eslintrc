@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
+  "extends": [
+    "standard",
+    "react-app"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-trailing-spaces": [
+      "error",
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "no-return-assign": 0,
+    "eol-last": 0,
+    "semi": 0,
+    "camelcase": 0,
+    "object-curly-spacing": 0,
+    "comma-dangle": 0
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "17.0.1",
+      "flowVersion": "0.86"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps"
+    ],
+    "watch": {
+      "stylelint-dev": {
+        "patterns": [
+          "/src/**/*.scss"
+        ],
+        "extensions": "scss"
+      },
+      "eslint": {
+        "patterns": [
+          "/src/**/*.js"
+        ],
+        "extensions": "js"
+      }
+    }
+  }
+}
