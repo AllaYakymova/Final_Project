@@ -2,7 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 import Proptypes from 'prop-types';
 
-const Button = ({ text, onClick = null, type = 'button', isLight, isBlack, size26957, size26357, size26346, size5757, fz24, fz18, fz14 }) => {
+const Button = ({
+  text,
+  onClick = null,
+  type = 'button',
+  isLight,
+  isBlack,
+  size26957,
+  size26357,
+  size26346,
+  size5757,
+  fz24,
+  fz18,
+  fz14,
+  mrt55,
+  fontw700
+}) => {
   const btnStyle = classNames('button', {
     button_light: isLight,
     button_black: isBlack,
@@ -13,7 +28,8 @@ const Button = ({ text, onClick = null, type = 'button', isLight, isBlack, size2
     fz_24: fz24,
     fz_18: fz18,
     fz_14: fz14,
-    // еще добавить классы для ховера и онклика
+    mr_t_55: mrt55,
+    font_w_700: fontw700
   })
   return (
     <button
@@ -38,7 +54,9 @@ Button.propTypes = {
   size5757: Proptypes.bool,
   fz24: Proptypes.bool,
   fz18: Proptypes.bool,
-  fz14: Proptypes.bool
+  fz14: Proptypes.bool,
+  mrt55: Proptypes.bool,
+  fontw700: Proptypes.bool
 };
 
 export default Button

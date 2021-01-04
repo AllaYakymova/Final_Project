@@ -1,0 +1,16 @@
+$main-color: #000;
+
+.counter {
+  display: flex;
+  align-items: center;
+  color: $main-color;
+
+  &__scoreboard {
+    margin: 0 0.5em;
+    width: 1em;
+    text-align: center;
+  }
+  &__handler {
+    //font-weight: 700;
+  }
+}

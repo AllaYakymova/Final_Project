@@ -1,0 +1,30 @@
+$main-color: #000;
+
+.closer {
+  position: relative;
+  height: 1.5em;
+  width: 1.5em;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 1em;
+    height: 1.5em;
+    border-left: 1px solid $main-color;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+.order_0 {
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+      order: 5;
+    }
+  }
+
+
+

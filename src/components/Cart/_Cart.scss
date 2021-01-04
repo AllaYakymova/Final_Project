@@ -1,0 +1,181 @@
+$main-color: #000;
+$secondary-color: #847A7A;
+
+.cart {
+  display: flex;
+  @media screen and (min-width: 320px) and (max-width: 1023px) {
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    flex-direction: row;
+  }
+  &-wrap {
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+      padding: 3em 0;
+      max-width: 122rem;
+    }
+  }
+  &__closer {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    &-m-l {
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1440px) {
+        display: block;
+        align-self: end;
+        justify-self: end;
+      }
+    }
+  }
+  &__items {
+    @media screen and (min-width: 320px) and (max-width: 1023px) {
+      margin-bottom: 5.3rem;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      margin-right: 2em;
+    }
+    @media screen and (min-width: 1023px) and (max-width: 1440px) {
+      max-width: 81em;
+      margin-bottom: 5.3rem;
+      margin-right: 2em;
+    }
+  }
+  &__item {
+    position: relative;
+    display: grid;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid $secondary-color;
+    padding-bottom: 2em;
+    padding-top: 1em;
+    @media screen and (min-width: 320px) and (max-width: 600px) {
+      grid-template-columns: 1fr 2fr;
+    }
+    @media screen and (min-width: 601px) and (max-width: 1440px) {
+      grid-template-columns: 1fr 1fr 2fr;
+      padding-bottom: 4em;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+      grid-template-columns: 1.2fr 1.2fr 1.6fr;
+      padding-top: 4em;
+    }
+
+    &:first-child {
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        border-top: 1px solid $secondary-color;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1440px) {
+        padding-top: 2.5em;
+      }
+    }
+  }
+  &__text {
+    text-transform: uppercase;
+    margin-top: 0.4em;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      margin-bottom: 1.5em;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+      margin-bottom: 2.2em;
+    }
+    &-title {
+      font-size: 1.6em;
+      font-weight: 700;
+      &_18 {
+        font-size: 1.8em;
+        font-weight: 700;
+      }
+      &-phone {
+        text-transform: capitalize;
+        font-size: 1.4em;
+        @media screen and (min-width: 768px) and (max-width: 1440px) {
+         display: none;
+        }
+      }
+    }
+    &_12 {
+      font-size: 1.2em;
+    }
+    &-subtitle {
+      font-size: 1.4em;
+    }
+  }
+  &__info-item {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    text-align: left;
+  }
+  &__info_flex-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  &__total {
+    background-color: #C4C4C4;
+    padding: 3em 0 4em 2.3rem;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      max-width: 32em;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      max-width: 50em;
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+      width: 36.2em;
+      height: 59em;
+    }
+    &-block {
+
+      &-mobile {
+        @media screen and (min-width: 320px) and (max-width: 1023px) {
+          display: block;
+        }
+        @media screen and (min-width: 1024px) and (max-width: 1440px) {
+          display: none;
+        }
+      }
+      &-desktop {
+        @media screen and (min-width: 320px) and (max-width: 1023px) {
+          display: none;
+        }
+        @media screen and (min-width: 1024px) and (max-width: 1440px) {
+          display: block;
+        }
+      }
+    }
+
+    &-line {
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid $secondary-color;
+        margin: 7.6em 0 5em;
+      }
+    }
+  }
+  &__shop-button {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      display: none;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+      display: block;
+    }
+  }
+}
+
+.fw400 {
+  font-weight: 400;
+}
+.mb1 {
+  margin-bottom: 1em;
+}
+.mb3 {
+  @media screen and (min-width: 320px) and (max-width: 1023px) {
+    margin-bottom: 3em;
+  }
+}

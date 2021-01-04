@@ -1,10 +1,18 @@
 import React from 'react';
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch, Redirect } from 'react-router-dom';
+import CartPage from '../pages/CartPage/CartPage'
+import CategoryPage from '../pages/CategoryPage/CategoryPage'
 
 const AppRoutes = () => {
   return (
     <Switch>
-      <Route exact path="/" />
+      <Redirect exact from='/' to='/categories' />
+      <Route exact path="/categories">
+        <CategoryPage />
+      </Route>
+      <Route exact path="/cart">
+        <CartPage />
+      </Route>
     </Switch>
   )
 };

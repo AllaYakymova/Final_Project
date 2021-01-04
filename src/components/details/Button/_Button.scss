@@ -8,10 +8,11 @@ $light-color: #E5E5E5;
   text-transform: uppercase;
   text-align: center;
   border-radius: 3px;
-  transition: all .5s ease-out;
+  outline: none;
+
  &_light {
    background-color: $light-color;
-   border: 2px solid  $light-color;
+   border: 2px solid  $main-background;
    color: $main-background;
  }
   &_black {
@@ -19,7 +20,11 @@ $light-color: #E5E5E5;
     border: 2px solid  $main-background;
     color: $main-color;
   }
+  &:hover{
+    font-weight: 700;
+  }
 }
+
 .size {
   &_269_57 {
     width: 26.9rem;
@@ -48,5 +53,14 @@ $light-color: #E5E5E5;
   }
   &_14 {
     font-size: 1.4rem;
+  }
+}
+
+.mr_t {
+  &_55 {
+    margin-top: 5.5rem
+  }
+  &_85{
+    margin-top: 8.5rem;
   }
 }

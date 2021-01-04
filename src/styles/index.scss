@@ -1,2 +1,27 @@
+@import "normalize";
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Odor+Mean+Chey&family=Open+Sans&family=Sofia&display=swap');
 @import "App";
 @import "../components/details/Button/Button";
+@import "src/components/ProductsList/ProductsList";
+@import "src/components/ProductCards/CardConstructor";
+@import "src/components/details/CartCounter/CartCounter";
+@import "src/components/ProductCards/CartCard/CartCard";
+@import "src/components/Cart/Cart";
+
+
+body {
+  margin: 0;
+  font-family:
+      'Open Sans', sans-serif,
+      'Josefin Sans', sans-serif,
+      'Odor Mean Chey', cursive,
+      'Sofia', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
