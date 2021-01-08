@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,700;1,500&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Josefin Sans', sans-serif;
+
+.account{
+  padding: 40px 20px 0;
+
+  @media screen and (min-width: 1024px){
+    padding: 50px 5% 30px;
+  }
+
+  &__header{
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: #000000;
+    margin: 0 0 60px;
+    border-bottom: 3px solid;
+
+    @media screen and (min-width: 768px){
+      font-size: 32px;
+      border: none;
+    }
+
+    @media screen and (min-width: 1024px){
+      font-size: 36px;
+    }
+
+  }
+  &__nav-bar{
+    display: none;
+
+    @media screen and (min-width: 768px){
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      font-size: 22px;
+    }
+
+    @media screen and (min-width: 1024px){
+      padding: 0 60px;
+      font-size: 24px;
+    }
+ 
+
+    &__link{
+      font-family: 'Open Sans', sans-serif;
+      font-weight: normal;
+      color: #828080;
+      margin: 0;
+      text-decoration: none;
+
+      &_active{
+        font-weight: bold;
+        color: #000000;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      &_active::after{
+        content: '';
+        width: 200px;
+        height: 1px;
+        background: #000000;
+        opacity: 0.2;
+        position: absolute;
+        bottom: -10px;
+
+        @media screen and (min-width: 1024px){
+          width: 280px;
+        }
+      }
+    }
+  }
+}
