@@ -110,7 +110,10 @@ const PaymentForm = () => {
             {...getCVCProps()}
           />
         </div>
-        <a className="payment-form__what-is-cvc" href="https://en.wikipedia.org/wiki/CVC_Capital_Partners">
+        <a
+          className="payment-form__what-is-cvc"
+          href="https://en.wikipedia.org/wiki/CVC_Capital_Partners"
+        >
           What is CVC/CVV/CID?
         </a>
         {meta.error && meta.isTouched && (

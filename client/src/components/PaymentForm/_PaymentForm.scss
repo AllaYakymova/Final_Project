@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,700;1,500&family=Open+Sans:wght@300;400;600;700&display=swap');
 
 .payment-form{
-
   &__header{
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
-    margin: 0 0 32px;
+    margin: 0 0 3.2rem;
     color: #000000;
 
     @media screen and (min-width: 768px){
-      margin: 0 0 52px;
+      margin: 0 0 5.2rem;
     }
   }
 
@@ -20,7 +19,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    margin: 0 0 40px;
+    margin: 0 0 4rem;
     color: #000000;
   }
 
@@ -28,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
 
     @media screen and (min-width: 768px){
       justify-content: flex-start;
@@ -36,7 +35,7 @@
   }
 
   &__payment-method-option{
-    margin-right: 45px;
+    margin-right: 4.5rem;
   }
 
   &__label{
@@ -46,10 +45,10 @@
     line-height: 16px;
     color: #000000;
     display: block;
-    margin-top: 55px;
+    margin-top: 5.5rem;
 
     @media screen and (min-width: 768px){
-      margin-top: 40px;
+      margin-top: 4rem;
     }
     
     &_cvc{
@@ -71,31 +70,31 @@
     border: none;
     border-bottom: 1px solid;
     outline: none;
-    margin: 20px 0 0;
+    margin: 2rem 0 0;
 
     &_expiry-date{
-      width: 100px;
+      width: 10rem;
     }
 
     &_cvv{
-      width: 70px;
+      width: 7rem;
     }
 
     &_cardNumber{
       @media screen and (min-width: 768px){
-        width: 160px;
+        width: 16rem;
       }
     }
 
     &_cardHolder{
       @media screen and (min-width: 768px){
-        width: 350px;
+        width: 35rem;
       }
     }
 
     @media screen and (min-width: 768px){
       display: inline-block;
-      margin-left: 20px;
+      margin-left: 2rem;
     }
 
   }
@@ -113,7 +112,7 @@
     color: #5A4EEA;
 
     @media screen and (min-width: 768px){
-       margin-left: 56px;
+       margin-left: 5.6rem;
     }
   }
 

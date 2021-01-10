@@ -10,7 +10,7 @@ const EnteringForm = () => {
     <div className="form-wrapper">
       <div className="registration-form__headers-wrapper">
         <h6
-          onClick={(e) => {
+          onClick={() => {
             setIsRegistered(false)
           }}
           className={classNames(
@@ -21,7 +21,7 @@ const EnteringForm = () => {
           Login
         </h6>
         <h6
-          onClick={(e) => {
+          onClick={() => {
             setIsRegistered(true)
           }}
           className={classNames(

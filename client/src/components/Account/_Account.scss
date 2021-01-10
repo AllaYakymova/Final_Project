@@ -4,10 +4,10 @@
 // font-family: 'Josefin Sans', sans-serif;
 
 .account{
-  padding: 40px 20px 0;
+  padding: 4rem 2rem 0;
 
   @media screen and (min-width: 1024px){
-    padding: 50px 5% 30px;
+    padding: 5rem 5% 3rem;
   }
 
   &__header{
@@ -37,12 +37,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 2rem;
       font-size: 22px;
     }
 
     @media screen and (min-width: 1024px){
-      padding: 0 60px;
+      padding: 0 6rem;
       font-size: 24px;
     }
  
@@ -64,7 +64,7 @@
 
       &_active::after{
         content: '';
-        width: 200px;
+        width: 20rem;
         height: 1px;
         background: #000000;
         opacity: 0.2;
@@ -72,7 +72,7 @@
         bottom: -10px;
 
         @media screen and (min-width: 1024px){
-          width: 280px;
+          width: 28rem;
         }
       }
     }

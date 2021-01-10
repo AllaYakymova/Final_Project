@@ -6,7 +6,7 @@
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
-    width: 460px;
+    width: 46rem;
   }
 
   &__headers-wrapper{
@@ -16,7 +16,7 @@
     width: 80%;
 
     @media screen and (min-width: 768px) {
-      width: 460px;
+      width: 46rem;
     }
   }
 
@@ -40,14 +40,14 @@
 
     &_active::after{
       content: '';
-      width: 140px;
+      width: 14rem;
       height: 1px;
       position: absolute;
       bottom: 0;
       background-color: white;
 
       @media screen and (min-width: 768px) {
-        width: 180px;
+        width: 18rem;
       }
     }
 
@@ -76,7 +76,7 @@
 
   &__label{
     display: block;
-    margin: 40px auto 0;
+    margin: 4rem auto 0;
     font-family: 'Open Sans', sans-serif;
    font-weight: bold;
    font-size: 12px;
@@ -85,7 +85,7 @@
    text-align: left;
 
    &_confirm{
-     margin-top: 25px;
+     margin-top: 2.5rem;
    }
   }
 
@@ -95,7 +95,7 @@
     line-height: 16px;
     display: block;
     width: 100%;
-    padding: 12px 0 5px;
+    padding: 1.2rem 0 0.5rem;
     border: none;
     border-bottom: 1px solid white;
     outline: none;
@@ -107,14 +107,14 @@
     display: block;
     text-align: left;
     position: relative;
-    padding-left: 30px;
+    padding-left: 3rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     line-height: 16px;
     color: #847A7A;
     cursor: pointer;
     user-select: none;
-    margin: 40px 0 0;
+    margin: 4rem 0 0;
   }
 
   &__checkbox {
@@ -131,8 +131,8 @@
     position: absolute;
     top: 2px;
     left: 0;
-    height: 10px;
-    width: 10px;
+    height: 1rem;
+    width: 1rem;
     background-color: black;
     border-radius: 50%;
     border: 1px solid white
@@ -141,8 +141,8 @@
 
   &__checkbox-wrapper input:checked ~ .registration-form__checkbox_customized::after {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 0.6rem;
+    height: 0.6rem;
     position: absolute;
     top: 2px;
     left: 2px;

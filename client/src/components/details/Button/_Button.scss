@@ -1,6 +1,6 @@
 $main-color: #fff;
-$main-background: #000;
-$light-color: #E5E5E5;
+$main-background: #000000;
+$light-color: #E5E5E5;;
 
 .button {
   display: block; // это под вопросом, может лучше задать
@@ -15,14 +15,16 @@ $light-color: #E5E5E5;
    border: 2px solid  $main-background;
    color: $main-background;
  }
+
   &_black {
     background-color: $main-background;
     border: 2px solid  $main-background;
     color: $main-color;
   }
-  &:hover{
-    font-weight: 700;
-  }
+}
+
+.button:hover{
+  font-weight: 700;
 }
 
 .size {
@@ -53,14 +55,26 @@ $light-color: #E5E5E5;
   }
   &_14 {
     font-size: 1.4rem;
-  }
+  } 
 }
 
-.mr_t {
-  &_55 {
-    margin-top: 5.5rem
+.mr {
+
+  &_r_auto{
+    margin: 0 auto 0 0;
   }
-  &_85{
-    margin-top: 8.5rem;
+   &_t_55 {
+     margin-top: 5.5rem;
+    
+     @media screen and (min-width: 768px){
+       margin-top: 11rem;
+    }
   }
+    &_t_85{
+     margin-top: 8.5rem;
+
+     @media screen and (min-width: 768px){
+       margin-top: 11rem;
+      }
+    }
 }

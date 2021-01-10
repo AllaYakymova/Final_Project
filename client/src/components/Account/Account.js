@@ -8,28 +8,28 @@ const Account = () => {
       <h3 className="account__header">My account</h3>
       <div className="account__nav-bar">
         <NavLink
-          to="/profile"
+          to="/account/profile"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
         >
           My profile
         </NavLink>
         <NavLink
-          to="wishlist"
+          to="/account/wishlist"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
         >
           My wishlist
         </NavLink>
         <NavLink
-          to="history"
+          to="/account/history"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
         >
           Purchase history
         </NavLink>
         <NavLink
-          to="adress"
+          to="/account/adress"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
         >
