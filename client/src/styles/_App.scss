@@ -20,3 +20,38 @@ html {
     width: 30%;
   }
 }
+
+.button{
+  margin: 0 auto;
+}
+
+.payment-form{
+  background: #f8f4f4;
+  width: 32rem;
+  padding: 1.5rem 5rem 3rem 1.5rem;
+  margin: 2.5rem auto 0;
+  box-sizing: border-box;
+  @media screen and (min-width: 768px){
+    width: 65rem;
+    padding: 5rem 6.5rem 11rem;
+  }
+}
+
+.form-wrapper{
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.welcoming-form-wrapper{
+  display: flex;
+  background-color: black;
+  color: white;
+  padding: 6rem 4rem;
+  height: 100vh;
+  box-sizing: border-box;
+}

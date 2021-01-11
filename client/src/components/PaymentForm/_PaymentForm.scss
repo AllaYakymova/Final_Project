@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,700;1,500&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+.payment-form{
+  &__header{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 3.2rem;
+    color: #000000;
+
+    @media screen and (min-width: 768px){
+      margin: 0 0 5.2rem;
+    }
+  }
+
+  &__total-price{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0 0 4rem;
+    color: #000000;
+  }
+
+  &__payment-method-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: 768px){
+      justify-content: flex-start;
+    }
+  }
+
+  &__payment-method-option{
+    margin-right: 4.5rem;
+  }
+
+  &__label{
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    display: block;
+    margin-top: 5.5rem;
+
+    @media screen and (min-width: 768px){
+      margin-top: 4rem;
+    }
+    
+    &_cvc{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      @media screen and (min-width: 768px){
+        align-items: baseline;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &__input{
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    margin: 2rem 0 0;
+
+    &_expiry-date{
+      width: 10rem;
+    }
+
+    &_cvv{
+      width: 7rem;
+    }
+
+    &_cardNumber{
+      @media screen and (min-width: 768px){
+        width: 16rem;
+      }
+    }
+
+    &_cardHolder{
+      @media screen and (min-width: 768px){
+        width: 35rem;
+      }
+    }
+
+    @media screen and (min-width: 768px){
+      display: inline-block;
+      margin-left: 2rem;
+    }
+
+  }
+
+
+  &__input::placeholder{
+    color: transparent;
+  }
+
+  &__what-is-cvc{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #5A4EEA;
+
+    @media screen and (min-width: 768px){
+       margin-left: 5.6rem;
+    }
+  }
+
+}
