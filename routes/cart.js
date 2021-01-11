@@ -11,7 +11,7 @@ const {
   deleteCart,
   deleteProductFromCart,
   getCart
-} = require("../controllers/cart");
+} = require("../cart");
 
 // @route   POST /cart
 // @desc    Create cart

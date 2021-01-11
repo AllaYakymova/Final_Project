@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
+// const passport = require("passport");
 const multer = require("multer"); // multer for parsing multipart form data (files)
 const fse = require("fs-extra");
 
@@ -56,7 +56,7 @@ const upload = multer({
 // @access  Private
 router.post(
   "/images",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   upload.array("photos"),
   addImages
 );
@@ -66,7 +66,7 @@ router.post(
 // @access  Private
 router.post(
   "/",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   addProduct
 );
 
@@ -75,7 +75,7 @@ router.post(
 // @access  Private
 router.put(
   "/:id",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   updateProduct
 );
 
