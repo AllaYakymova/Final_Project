@@ -23,7 +23,7 @@ exports.addCategory = (req, res, next) => {
   });
 };
 
-exports.aupdateCategory = (req, res, next) => {
+exports.updateCategory = (req, res, next) => {
   Catalog.findOne({ id: req.params.id })
     .then(category => {
       if (!category) {
@@ -80,7 +80,11 @@ exports.deleteCategory = (req, res, next) => {
 };
 
 exports.getCategories = (req, res, next) => {
-  Catalog.find()
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+
+    Catalog.find()
     .then(catalog => res.send(catalog))
     .catch(err =>
       res.status(400).json({
