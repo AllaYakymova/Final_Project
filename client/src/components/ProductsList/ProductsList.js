@@ -1,10 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import Proptypes, { object } from 'prop-types'
-import {products} from '../../utilities/utilities'
 
-const ProductsList = () => {
-  const list = products.map(product => {
+const ProductsList = ({ prods }) => {
+  // const products = useSelector(store => store.products)
+
+  const list = prods.map(product => {
     return (
         <li key={product.id} className="card card_short">
           <ShortCard product={product} />

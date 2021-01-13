@@ -1,11 +1,15 @@
-import {combineReducers} from 'redux';
-import { REQUEST_PRODUCTS_SUCCESS, REQUEST_PRODUCTS_ERROR, REQUEST_PRODUCTS_IN_PROCESS } from './../constants/constants';
+import { combineReducers } from 'redux'
+import {
+  REQUEST_PRODUCTS_SUCCESS,
+  REQUEST_PRODUCTS_ERROR,
+  REQUEST_PRODUCTS_IN_PROCESS
+} from './../constants/constants'
 
 const initialStore = {
   products: [],
   isLoaded: false,
-  error: '',
-};
+  error: ''
+}
 
 const getProductsReducer = (store = initialStore, action) => {
   switch (action.type) {
@@ -13,24 +17,24 @@ const getProductsReducer = (store = initialStore, action) => {
       return {
         ...store,
         isLoaded: true,
-        products: action.payload,
-      };
+        products: action.payload
+      }
     case REQUEST_PRODUCTS_ERROR:
       return {
         ...store,
         isLoaded: false,
         error: action.payload
-      };
+      }
     case REQUEST_PRODUCTS_IN_PROCESS:
       return {
         ...store,
-        isLoaded: false,
-      };
+        isLoaded: false
+      }
     default:
-      return store;
+      return store
   }
-};
+}
 
 export const rootReducer = combineReducers({
-  getProducts: getProductsReducer
-});
+  fetchProducts: getProductsReducer
+})
