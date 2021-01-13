@@ -104,6 +104,9 @@ exports.getProducts = (req, res, next) => {
   const startPage = Number(req.query.startPage);
   const sort = req.query.sort;
 
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+
   Product.find()
     .skip(startPage * perPage - perPage)
     .limit(perPage)

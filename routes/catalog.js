@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
+// const passport = require("passport");
 
 //Import controllers
 const {
   addCategory,
-  aupdateCategory,
+  updateCategory,
   deleteCategory,
   getCategories,
   getCategory
@@ -16,7 +16,7 @@ const {
 // @access  Private
 router.post(
   "/",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   addCategory
 );
 
@@ -25,8 +25,8 @@ router.post(
 // @access  Private
 router.put(
   "/:id",
-  passport.authenticate("jwt-admin", { session: false }),
-  aupdateCategory
+  //passport.authenticate("jwt-admin", { session: false }),
+  updateCategory
 );
 
 // @route   DELETE /catalog/:id
@@ -34,7 +34,7 @@ router.put(
 // @access  Private
 router.delete(
   "/:id",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   deleteCategory
 );
 

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "men-clothing-jackets-and-coats",
+    "name": "jackets-and-coats",
+    "parentId": "men-clothing",
+    "categoryId": 21
+  },
+  {
+    "id": "men-clothing-jeans",
+    "name": "jeans",
+    "parentId": "men-clothing",
+    "categoryId": 22
+  },
+  {
+    "id": "men-clothing-sweaters",
+    "name": "sweaters",
+    "parentId": "men-clothing",
+    "categoryId": 23
+  },
+  {
+    "id": "men-accessories-belts",
+    "name": "belts",
+    "parentId": "men-accessories",
+    "categoryId": 31
+  },
+  {
+    "id": "men-accessories-bags",
+    "name": "bags",
+    "parentId": "men-accessories",
+    "categoryId": 32
+  },
+  {
+    "id": "men-accessories-scarves",
+    "name": "scarves",
+    "parentId": "men-accessories",
+    "categoryId": 33
+  },
+  {
+    "id": "women-clothing-dresses",
+    "name": "dresses",
+    "parentId": "women-clothing",
+    "categoryId": 41
+  },
+  {
+    "id": "women-clothing-jackets-and-coats",
+    "name": "jackets-and-coats",
+    "parentId": "women-clothing",
+    "categoryId": 42
+  },
+  {
+    "id": "women-clothing-jeans",
+    "name": "jeans",
+    "parentId": "women-clothing",
+    "categoryId": 43
+  },
+  {
+    "id": "women-accessories-bags",
+    "name": "bags",
+    "parentId": "women-accessories",
+    "categoryId": 51
+  },
+  {
+    "id": "women-accessories-scarves",
+    "name": "scarves",
+    "parentId": "women-accessories",
+    "categoryId": 52
+  },
+  {
+    "id": "women-accessories-belts",
+    "name": "belts",
+    "parentId": "women-accessories",
+    "categoryId": 53
+  }
+]
