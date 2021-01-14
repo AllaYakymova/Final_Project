@@ -12,6 +12,8 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Beige",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/men",
     "itemNo": "0941151001",
     "sizes": [
@@ -41,6 +43,8 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Dark navy blue",
+    "colorName": "dark blue",
+    "cssStyles": "#000080",
     "productUrl": "/men",
     "itemNo": "0941151002",
     "sizes": [
@@ -69,6 +73,8 @@
     "previousPrice": 150.00,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0819500001",
     "sizes": [
@@ -97,6 +103,8 @@
     "previousPrice": 150.00,
     "categories": "men",
     "color": "Light beige",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/men",
     "itemNo": "0819500005",
     "sizes": [
@@ -126,6 +134,8 @@
     "previousPrice": 150.00,
     "categories": "men",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0819500006",
     "sizes": [
@@ -154,6 +164,8 @@
     "previousPrice": 79.99,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0781638007",
     "sizes": [
@@ -182,6 +194,8 @@
     "previousPrice": 79.99,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0781638008",
     "sizes": [
@@ -210,6 +224,8 @@
     "previousPrice": 69.99,
     "categories": "men",
     "color": "Dark khaki green",
+    "colorName": "khaki green",
+    "cssStyles": "#7e805d",
     "productUrl": "/men",
     "itemNo": "0908449001",
     "sizes": [
@@ -238,6 +254,8 @@
     "previousPrice": 69.99,
     "categories": "men",
     "color": "Navy blue",
+    "color name": "dark blue",
+    "cssStyles": "#000080",
     "productUrl": "/men",
     "itemNo": "0908449002",
     "sizes": [
@@ -266,6 +284,8 @@
     "previousPrice": 69.99,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0908449003",
     "sizes": [
@@ -294,6 +314,8 @@
     "previousPrice": 19.99,
     "categories": "men",
     "color": "Light denim blue",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/men",
     "itemNo": "0636207010",
     "sizes": [
@@ -400,6 +422,8 @@
     "previousPrice": 19.99,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0636207006",
     "sizes": [
@@ -454,6 +478,8 @@
     "previousPrice": 19.99,
     "categories": "men",
     "color": "Steel blue",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/men",
     "itemNo": "0927964004",
     "sizes": [
@@ -508,6 +534,8 @@
     "previousPrice": 19.99,
     "categories": "men",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0927964004",
     "sizes": [
@@ -562,6 +590,8 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Light gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0907688004",
     "sizes": [
@@ -591,6 +621,7 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/men",
     "itemNo": "0907688006",
     "sizes": [
@@ -611,7 +642,7 @@
     "enabled": true,
     "categoryId": 23,
     "imageUrls": [
-      "https://res.cloudinary.com/originalite/image/upload/v1609970371/hmgoepprod_ufohud.jpg",
+      "https://res.cloudinary.com/originalite/image/upload/v1609970353/hmgoepprod_w0kf8x.jpg",
       "https://res.cloudinary.com/originalite/image/upload/v1609970390/hmgoepprod_i4ebaw.jpg"
     ],
     "quantity": 60,
@@ -620,6 +651,7 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Navy blue",
+    "cssStyles": "#000080",
     "productUrl": "/men",
     "itemNo": "0933465002",
     "sizes": [
@@ -640,15 +672,17 @@
     "enabled": true,
     "categoryId": 23,
     "imageUrls": [
-      "https://res.cloudinary.com/originalite/image/upload/v1609970371/hmgoepprod_ufohud.jpg",
-      "https://res.cloudinary.com/originalite/image/upload/v1609970390/hmgoepprod_i4ebaw.jpg"
+      "https://res.cloudinary.com/originalite/image/upload/v1610631595/hmgoepprod_sufiuh.jpg",
+      "https://res.cloudinary.com/originalite/image/upload/v1610631692/hmgoepprod_m7iu8g.jpg"
     ],
     "quantity": 60,
     "name": "Premium Cotton Polo Sweater",
     "currentPrice": 39.99,
     "previousPrice": 50.00,
     "categories": "men",
-    "color": "Light beige",
+    "color": "Light Beige",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/men",
     "itemNo": "0933465003",
     "sizes": [
@@ -678,6 +712,8 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Natural white",
+    "colorName": "white",
+    "cssStyles": "#ffffff",
     "productUrl": "/men",
     "itemNo": "0782479001",
     "sizes": [
@@ -707,6 +743,8 @@
     "previousPrice": 50.00,
     "categories": "men",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0782479011",
     "sizes": [
@@ -736,6 +774,8 @@
     "previousPrice": 20.00,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0677917002",
     "sizes": [
@@ -765,6 +805,8 @@
     "previousPrice": 20.00,
     "categories": "men",
     "color": "Dark brown",
+    "colorName": "brown",
+    "cssStyles": "#654737",
     "productUrl": "/men",
     "itemNo": "0677917007",
     "sizes": [
@@ -794,6 +836,8 @@
     "previousPrice": 20.00,
     "categories": "men",
     "color": "Dark cognac brown",
+    "colorName": "brown",
+    "cssStyles": "#654737",
     "productUrl": "/men",
     "itemNo": "0337991002",
     "sizes": [
@@ -823,6 +867,8 @@
     "previousPrice": 20.00,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0337991001",
     "sizes": [
@@ -852,6 +898,8 @@
     "previousPrice": 10.00,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0731851001",
     "sizes": [
@@ -877,6 +925,8 @@
     "previousPrice": 40.00,
     "categories": "men",
     "color": "Dark blue",
+    "color name": "dark blue",
+    "cssStyles": "#000080",
     "productUrl": "/men",
     "itemNo": "0845714001",
     "sizes": [
@@ -900,6 +950,8 @@
     "previousPrice": 40.00,
     "categories": "men",
     "color": "Brown",
+    "colorName": "brown",
+    "cssStyles": "#654737",
     "productUrl": "/men",
     "itemNo": "0845714001",
     "sizes": [
@@ -924,6 +976,8 @@
     "previousPrice": 40.00,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0736631005",
     "sizes": [
@@ -948,6 +1002,8 @@
     "previousPrice": 59.99,
     "categories": "men",
     "color": "Gray melange",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0783732003",
     "sizes": [
@@ -972,6 +1028,8 @@
     "previousPrice": 9.99,
     "categories": "men",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/men",
     "itemNo": "0742745005",
     "sizes": [
@@ -996,6 +1054,8 @@
     "previousPrice": 12.99,
     "categories": "men",
     "color": "Dark gray melange",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/men",
     "itemNo": "0789158007",
     "sizes": [
@@ -1020,6 +1080,8 @@
     "previousPrice": 39.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0940451001",
     "sizes": [
@@ -1049,6 +1111,8 @@
     "previousPrice": 49.99,
     "categories": "women",
     "color": "Turquoise",
+    "colorName": "Turquoise",
+    "cssStyles": "#06b8b9",
     "productUrl": "/women",
     "itemNo": "0923532003",
     "sizes": [
@@ -1077,6 +1141,8 @@
     "previousPrice": 49.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0923532003",
     "sizes": [
@@ -1106,6 +1172,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Dark purple",
+    "colorName": "purple",
+    "cssStyles": "#301934",
     "productUrl": "/women",
     "itemNo": "0934072004",
     "sizes": [
@@ -1135,6 +1203,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0923552001",
     "sizes": [
@@ -1164,6 +1234,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0926246001",
     "sizes": [
@@ -1193,6 +1265,8 @@
     "previousPrice": 79.99,
     "categories": "women",
     "color": "Cream",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0942474002",
     "sizes": [
@@ -1222,6 +1296,8 @@
     "previousPrice": 79.99,
     "categories": "women",
     "color": "Light taupe",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0942474003",
     "sizes": [
@@ -1251,6 +1327,8 @@
     "previousPrice": 59.99,
     "categories": "women",
     "color": "Cream",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0940313001",
     "sizes": [
@@ -1280,6 +1358,8 @@
     "previousPrice": 59.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0940313002",
     "sizes": [
@@ -1309,6 +1389,8 @@
     "previousPrice": 129.00,
     "categories": "women",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/women",
     "itemNo": "0916798001",
     "sizes": [
@@ -1337,6 +1419,8 @@
     "previousPrice": 79.99,
     "categories": "women",
     "color": "Cream",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0891247004",
     "sizes": [
@@ -1365,6 +1449,8 @@
     "previousPrice": 79.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0891247001",
     "sizes": [
@@ -1393,6 +1479,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Light taupe",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0925331002",
     "sizes": [
@@ -1422,6 +1510,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/women",
     "itemNo": "0925331003",
     "sizes": [
@@ -1451,6 +1541,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Dark gray",
+    "colorName": "gray",
+    "cssStyles": "#6b6e6f",
     "productUrl": "/women",
     "itemNo": "0916966001",
     "sizes": [
@@ -1479,6 +1571,8 @@
     "previousPrice": 69.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0916966002",
     "sizes": [
@@ -1507,6 +1601,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Denim blue/washed",
+    "colorName": "blue",
+    "cssStyles": "#467fa8",
     "productUrl": "/women",
     "itemNo": "0714790017",
     "sizes": [
@@ -1540,6 +1636,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Denim blue",
+    "colorName": "blue",
+    "cssStyles": "#467fa8",
     "productUrl": "/women",
     "itemNo": "0714790039",
     "sizes": [
@@ -1573,6 +1671,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Light denim blue/washed",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/women",
     "itemNo": "0714790020",
     "sizes": [
@@ -1638,6 +1738,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Light denim blue/trashed",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/women",
     "itemNo": "0799365011",
     "sizes": [
@@ -1671,6 +1773,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Light denim blue",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/women",
     "itemNo": "0572998009",
     "sizes": [
@@ -1704,6 +1808,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Light denim blue",
+    "colorName": "light blue",
+    "cssStyles": "#cde1e8",
     "productUrl": "/women",
     "itemNo": "0572998001",
     "sizes": [
@@ -1737,6 +1843,8 @@
     "previousPrice": 29.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0866636001",
     "sizes": [
@@ -1760,6 +1868,8 @@
     "previousPrice": 24.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0753475001",
     "sizes": [
@@ -1783,6 +1893,8 @@
     "previousPrice": 24.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0753475025",
     "sizes": [
@@ -1806,6 +1918,8 @@
     "previousPrice": 19.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0611635003",
     "sizes": [
@@ -1830,6 +1944,8 @@
     "previousPrice": 19.99,
     "categories": "women",
     "color": "Light brown",
+    "colorName": "brown",
+    "cssStyles": "#654737",
     "productUrl": "/women",
     "itemNo": "0911061001",
     "sizes": [
@@ -1854,6 +1970,8 @@
     "previousPrice": 19.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0911061004",
     "sizes": [
@@ -1877,6 +1995,8 @@
     "previousPrice": 19.99,
     "categories": "women",
     "color": "Light beige",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0883689002",
     "sizes": [
@@ -1901,6 +2021,8 @@
     "previousPrice": 59.99,
     "categories": "women",
     "color": "Light beige",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0936644002",
     "sizes": [
@@ -1926,6 +2048,8 @@
     "previousPrice": 59.99,
     "categories": "women",
     "color": "Cream",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0936644003",
     "sizes": [
@@ -1951,6 +2075,8 @@
     "previousPrice": 59.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0936644001",
     "sizes": [
@@ -1976,6 +2102,8 @@
     "previousPrice": 12.99,
     "categories": "women",
     "color": "Cream/chain",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0772565033",
     "sizes": [
@@ -2000,6 +2128,8 @@
     "previousPrice": 9.99,
     "categories": "women",
     "color": "Mint green/floral",
+    "colorName": "mint green",
+    "cssStyles": " #b5decf",
     "productUrl": "/women",
     "itemNo": "0753692035",
     "sizes": [
@@ -2024,6 +2154,8 @@
     "previousPrice": 9.99,
     "categories": "women",
     "color": "Light purple/floral",
+    "colorName": "light purple",
+    "cssStyles": "#c1aec5",
     "productUrl": "/women",
     "itemNo": "0753692030",
     "sizes": [
@@ -2048,6 +2180,8 @@
     "previousPrice": 14.99,
     "categories": "women",
     "color": "Light beige/leopard print",
+    "colorName": "beige",
+    "cssStyles": "#d3c3b0",
     "productUrl": "/women",
     "itemNo": "0938364002",
     "sizes": [
@@ -2072,6 +2206,8 @@
     "previousPrice": 10.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0589748001",
     "sizes": [
@@ -2102,6 +2238,8 @@
     "previousPrice": 12.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0943391001",
     "sizes": [
@@ -2132,6 +2270,8 @@
     "previousPrice": 17.99,
     "categories": "women",
     "color": "Gold-colored/black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0956077001",
     "sizes": [
@@ -2186,6 +2326,8 @@
     "previousPrice": 17.99,
     "categories": "women",
     "color": "Black",
+    "colorName": "black",
+    "cssStyles": "#000000",
     "productUrl": "/women",
     "itemNo": "0907397001",
     "sizes": [
