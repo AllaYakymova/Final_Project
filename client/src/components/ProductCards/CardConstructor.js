@@ -41,35 +41,35 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
 
   // General used constants
   const name = <p className={cardTitle}>{product.name}</p>
-  const price = <span className={cardPrice}>{product.price} &#36;</span>
+  const price = <span className={cardPrice}>{product.currentPrice} &#36;</span>
   const code = <p className={cardSubText}>REF: {product.id}</p>
-  const productImage = (image && <img className={cardImage} src={product.image} alt={product.image} />)
+  const productImage = (image && <img className={cardImage} src={product.imageUrls[0]} alt={product.name} />)
 
   // For detailed product card
-  const colors = product.color.map(color => {
-    return (
-      <li key={product.code + product.price}>
-        <div className="card__palette" style={{backgroundColor: {color}}} />
-        <p>{color}</p>
-      </li>
-    )
-  })
-  const sizes = product.size.map(size => {
-    return (
-      <li key={product.code + product.name}>
-        <p>{size}</p>
-      </li>
-    )
-  })
-  const polette = (<div><span>Color</span><ul>{colors}</ul></div>)
-  const sizeList = (<div><span>Size</span><ul>{sizes}</ul></div>)
+  // const colors = product.color.map(color => {
+  //   return (
+  //     <li key={product.code + product.price}>
+  //       <div className="card__palette" style={{backgroundColor: {color}}} />
+  //       <p>{color}</p>
+  //     </li>
+  //   )
+  // })
+  // const sizes = product.size.map(size => {
+  //   return (
+  //     <li key={product.code + product.name}>
+  //       <p>{size}</p>
+  //     </li>
+  //   )
+  // })
+  // const polette = (<div><span>Color</span><ul>{colors}</ul></div>)
+  // const sizeList = (<div><span>Size</span><ul>{sizes}</ul></div>)
   const favButton = (favorite && <Button text={<FavIcon />} />)
   const buyButton = (buyBtn && <Button text="Add to basket" onClick={() => {}} />)
 
   // for Cart
   const counter = (isCart && <CartCounter />)
   const cartInfoArr = [
-    {title: 'Price:', value: product.price},
+    {title: 'Price:', value: product.currentPrice},
     {title: 'Color:', value: 'chosenColor'},
     {title: 'Size:', value: 'chosenSize'},
     {title: 'Quantity:', value: counter}]
@@ -94,7 +94,8 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
       )
     } else if (isDetail) {
       return (
-        <>{name}{code}{price}{polette}{sizeList}
+        <>{name}{code}{price}
+
           <div className={cardWrap}>{buyButton}{favButton}</div>
         </>
       )

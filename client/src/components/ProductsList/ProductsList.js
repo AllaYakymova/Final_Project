@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import Proptypes, { object } from 'prop-types'
 
-const ProductsList = ({ prods }) => {
-  // const products = useSelector(store => store.products)
+const ProductsList = () => {
+  const products = useSelector(store => store.products.products)
 
-  const list = prods.map(product => {
+  const list = products.map(product => {
     return (
         <li key={product.id} className="card card_short">
           <ShortCard product={product} />
@@ -14,11 +14,11 @@ const ProductsList = ({ prods }) => {
   });
 
   return (
-      <div >
+      <>
         <ul className="cards-wrap">
           {list}
         </ul>
-      </div>
+      </>
   )
 }
 

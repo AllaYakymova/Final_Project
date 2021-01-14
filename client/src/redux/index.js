@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore, compose } from 'redux'
 import { rootReducer } from './reducers'
 import createSagaMiddleware from 'redux-saga'
-import { watchFetchProducts } from './sagas/getProductsSaga'
+import { watchFetchProducts } from './sagas/fetchProductesSaga/undex'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -14,6 +14,6 @@ const store = createStore(
   compose(applyMiddleware(sagaMiddleware), devTools)
 )
 
-// sagaMiddleware.run(watchFetchProducts)
+sagaMiddleware.run(watchFetchProducts)
 
 export default store

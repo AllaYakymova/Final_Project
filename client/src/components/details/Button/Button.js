@@ -1,11 +1,3 @@
-// import React from 'react'
-
-// const Button = ({ className, text }) => {
-//   return <button className={className}>{text}</button>
-// }
-
-// export default Button
-
 import React from 'react'
 import classNames from 'classnames'
 import Proptypes from 'prop-types'

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import MainPage from '../pages/MainPage/MainPage'
 import CartPage from '../pages/CartPage/CartPage'
 import CategoryPage from '../pages/CategoryPage/CategoryPage'
 import ProfileForm from '../components/ProfileForm/ProfileForm'
@@ -9,12 +8,10 @@ import QuickOrderForm from '../components/QuickOrderForm/QuickOrderForm'
 import Account from '../components/Account/Account'
 import PaymentForm from '../components/PaymentForm/PaymentForm'
 
-const AppRoutes = ({ prods }) => {
+const AppRoutes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <MainPage prods={prods}/>
-      </Route>
+      <Redirect exact from="/" to="/categories" />
       <Route exact path="/categories">
         <CategoryPage />
       </Route>

@@ -1,4 +1,4 @@
-export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
-export const REQUEST_PRODUCTS_SUCCESS = 'REQUEST_PRODUCTS_SUCCESS';
-export const REQUEST_PRODUCTS_ERROR = 'REQUEST_PRODUCTS_ERROR';
-export const REQUEST_PRODUCTS_IN_PROCESS = 'REQUEST_PRODUCTS_IN_PROCESS';
+export const FETCH_PRODUCTS = 'products/fetchProducts';
+export const PRODUCTS_REQUEST_SUCCESS = 'products/productsRequestSuccess';
+export const PRODUCTS_REQUEST_ERROR = 'products/productsRequestError';
+export const PRODUCTS_REQUEST_IN_PROCESS = 'products/productsRequestInProcess';

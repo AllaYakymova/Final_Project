@@ -2,15 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import App from './App';
-import { connect, Provider } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './redux';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
-
-// const ConnectedApp = connect((state) => {
-//   console.log(state)
-//   return state;
-// })(App)
 
 ReactDOM.render(
   <React.StrictMode>
