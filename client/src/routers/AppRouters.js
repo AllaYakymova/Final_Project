@@ -10,9 +10,8 @@ import PaymentForm from '../components/PaymentForm/PaymentForm'
 
 const AppRoutes = () => {
   return (
-    // <Switch>
-    <>
-      {/* <Redirect exact from="/" to="/categories" /> */}
+    <Switch>
+      <Redirect exact from="/" to="/categories" />
       <Route exact path="/categories">
         <CategoryPage />
       </Route>
@@ -43,8 +42,7 @@ const AppRoutes = () => {
       <Route exact path="/account/adress">
         <h1>adress</h1>
       </Route>
-    </>
-    /* </Switch> */
+  </Switch>
   )
 }
 export default AppRoutes

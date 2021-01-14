@@ -25,3 +25,7 @@ yarn-error.log*
 static/index.html
 
 
+
+.eslintcache
+client/.eslintcache
+src/redux/reducers/filter/
