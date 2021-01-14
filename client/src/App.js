@@ -11,12 +11,14 @@ function App () {
       })
       .then((res) => {
         setProds(res)
-        console.log('res', res)
+
+        console.log('res', res.map(el => el.color))
       })
   }, [])
 
   return (
         <div className="App">
+
             <AppRoutes prods={prods} />
         </div>
   )
