@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import CartPage from '../pages/CartPage/CartPage'
 import CategoryPage from '../pages/CategoryPage/CategoryPage'
+import ProductPage from '../pages/ProductPage/ProductPage'
 import ProfileForm from '../components/ProfileForm/ProfileForm'
 import EnteringForm from '../components/EnteringForm/EnteringForm'
 import QuickOrderForm from '../components/QuickOrderForm/QuickOrderForm'
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route exact path="/categories">
         <CategoryPage />
       </Route>
+      <Route exact path="/categories/:product" render={(routerProps) => <ProductPage {...routerProps} />} />
       <Route exact path="/cart">
         <CartPage />
       </Route>

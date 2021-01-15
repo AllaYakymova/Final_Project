@@ -1,0 +1,19 @@
+.detail__info-wrap {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 1rem 0;
+
+  &_desktop {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+.detail__info-wrap_mobile {
+  @media screen and (min-width: 320px) and (max-width: 600px) {
+    width: 20rem;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}

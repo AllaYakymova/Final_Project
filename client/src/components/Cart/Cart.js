@@ -1,19 +1,21 @@
 import React from 'react'
-import { products, cart } from '../../utilities/utilities'
+import { cart } from '../../utilities/utilities'
 import CartCard from '../ProductCards/CartCard/CartCard'
 import { TextField } from '@material-ui/core'
 import Button from '../details/Button/Button'
+import { useSelector } from 'react-redux'
 
 const Cart = () => {
+  const products = useSelector(store => store.products.products)
   let totalSum = 0;
 
   const cartList = products.map(product => {
-    if (cart.includes(product.id)) {
-      const amount = cart.filter(item => item === product.id).length;
-      const sum = +(amount * product.price);
+    if (cart.includes(product.itemNo)) {
+      const amount = cart.filter(item => item === product.itemNo).length;
+      const sum = +(amount * product.currentPrice);
       totalSum = totalSum + sum;
       return (
-        <li key={product.id} className="cart__item">
+        <li key={product.itemNo} className="cart__item">
           <CartCard product={product} number={amount}/>
         </li>)
     }
@@ -29,9 +31,7 @@ const Cart = () => {
 
   return (
     <div className="cart-wrap">
-      {paginatorLeft}
       <h3 className="cart__text-title-phone">Shopping bag</h3>
-      {shopButton}
       <div className="cart">
         <ul className="cart__items">
           {cartList}
@@ -44,3 +44,7 @@ const Cart = () => {
 }
 
 export default Cart
+
+// {paginatorLeft}
+// <h3 className="cart__text-title-phone">Shopping bag</h3>
+// {shopButton}

@@ -9,6 +9,10 @@ $light-color: #E5E5E5;;
   text-align: center;
   border-radius: 3px;
   outline: none;
+  margin: 0;
+  &:hover{
+    font-weight: 700;
+  }
 
  &_light {
    background-color: $light-color;
@@ -21,11 +25,64 @@ $light-color: #E5E5E5;;
     border: 2px solid  $main-background;
     color: $main-color;
   }
+  &_iterator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    &:hover {
+      font-weight: 400;
+    }
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &_size {
+      background-color: #ffffff;
+      border: 1px solid transparent;
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1em;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1440px) {
+        font-size: 1.1em;
+      }
+      &:hover {
+        font-weight: 400;
+      }
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    &_color {
+      border: 1px solid transparent;
+      border-radius: 50%;
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 2.3rem;
+        height: 2.3rem;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1440px) {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+    &_text {
+      text-transform: lowercase;
+      @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.2rem;
+      }
+      @media screen and (min-width: 768px) and (max-width: 1440px) {
+        font-size: 1.4rem;
+      }
+    }
+  }
 }
 
-.button:hover{
-  font-weight: 700;
-}
 
 .size {
   &_269_57 {
@@ -40,9 +97,12 @@ $light-color: #E5E5E5;;
     width: 26.3rem;
     height: 4.6rem;
   }
-  &_57_57 {
-    width: 5.7rem;
+  &_55_57 {
     height: 5.7rem;
+    width: 5.5rem;
+  }
+  &_5 {
+    width: 5rem;
   }
 }
 
@@ -61,7 +121,7 @@ $light-color: #E5E5E5;;
 .mr {
 
   &_r_auto{
-    margin: 0 auto 0;
+    margin: 0 auto;
   }
    &_t_55 {
      margin-top: 5.5rem;

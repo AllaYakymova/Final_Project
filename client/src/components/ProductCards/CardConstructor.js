@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import classNames from 'classnames';
 import Button from '../details/Button/Button'
 import FavIcon from '../details/icons/FavoriteIcon'
 import CartCounter from '../details/CartCounter/CartCounter'
+import { useSelector } from 'react-redux'
 
 const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, favorite, total }) => {
+  const products = useSelector(store => store.products.products)
+
   const cardTitle = classNames('card__title', {
     card__title_short: isShort,
     card__title_detail: isDetail,
@@ -42,29 +46,57 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
   // General used constants
   const name = <p className={cardTitle}>{product.name}</p>
   const price = <span className={cardPrice}>{product.currentPrice} &#36;</span>
-  const code = <p className={cardSubText}>REF: {product.id}</p>
-  const productImage = (image && <img className={cardImage} src={product.imageUrls[0]} alt={product.name} />)
+  const code = <p className={cardSubText}>REF: {product.itemNo}</p>
+  const productImage = (image && <img className={cardImage} src={product.imageUrls[0]} alt={product.name}/>)
 
   // For detailed product card
-  // const colors = product.color.map(color => {
-  //   return (
-  //     <li key={product.code + product.price}>
-  //       <div className="card__palette" style={{backgroundColor: {color}}} />
-  //       <p>{color}</p>
-  //     </li>
-  //   )
-  // })
-  // const sizes = product.size.map(size => {
-  //   return (
-  //     <li key={product.code + product.name}>
-  //       <p>{size}</p>
-  //     </li>
-  //   )
-  // })
-  // const polette = (<div><span>Color</span><ul>{colors}</ul></div>)
-  // const sizeList = (<div><span>Size</span><ul>{sizes}</ul></div>)
-  const favButton = (favorite && <Button text={<FavIcon />} />)
-  const buyButton = (buyBtn && <Button text="Add to basket" onClick={() => {}} />)
+
+  // size iterator
+  const iterator = useCallback(() => {
+    const iterItems = product.sizes.map(item => {
+      return (
+        <li key={product.itemNo + product.name} className={classNames('card__iterator_item')}>
+          <Button onClick={() => {}} isIterSize text={item} />
+        </li>)
+    })
+    return (
+      <ul className='card__iterator_wrap'>
+        {iterItems}
+      </ul>
+    )
+  }, [product]);
+
+  // color iterator
+  const findSameProds = useCallback(name => products.filter(item => item.name === name), [products]);
+  const colorCircle = (color, text) => (<><div className='button_iterator_color' style={{ backgroundColor: color}}/><p className='button_iterator_text'>{text}</p></>);
+
+  const colorIterator = useCallback(() => {
+    const sameProds = findSameProds(product.name);
+    console.log(product.name, sameProds)
+    const iterItems = sameProds.map(item => {
+      const route = '/categories/' + item._id;
+      return (
+        <li key={item._id + item.name} className='card__iterator_item'>
+          <Link to={route}>
+            <Button onClick={() => {}} isIterColor text={colorCircle(item.cssStyles, item.color)} />
+          </Link>
+        </li>)
+    })
+    return (
+      <ul className='card__iterator_wrap'>
+        {iterItems}
+      </ul>
+    )
+  }, [product, findSameProds]);
+
+  const description = <p className={cardText}>{product.oneMoreCustomParam.description}</p>
+  const favButton = (favorite && <Button text={<FavIcon />} isBlack size5557 />)
+  const buyButton = (buyBtn && <Button text="Add to basket" onClick={() => {}} isBlack size26357 fz18/>)
+
+  const titleBlock = <div className='detail__info-wrap detail__info-wrap_mobile'>{name}{price}{code}</div>
+
+  const mobilePhotoBlock = (<div className={cardInfoWrap}>
+    {productImage}{titleBlock}</div>)
 
   // for Cart
   const counter = (isCart && <CartCounter />)
@@ -87,38 +119,48 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
   const cardInfo = () => {
     if (isShort) {
       return (
-        <>
+        <div className={cardInfoWrap}>
+          {productImage}
           {name}
           {price}
-        </>
+        </div>
       )
     } else if (isDetail) {
       return (
-        <>{name}{code}{price}
-
-          <div className={cardWrap}>{buyButton}{favButton}</div>
+        <>
+          {mobilePhotoBlock}
+          <div className={cardInfoWrap}>
+            <div className='detail__info-wrap detail__info-wrap_desktop'>{name}{price}{code}</div>
+            <h3 className='card__subtitle_detail'>Colors</h3>
+            {colorIterator()}
+            <h3 className='card__subtitle_detail'>Size</h3>
+            {iterator()}
+            <div className='card__buttons_wrap'>{buyButton}{favButton}</div>
+            <h3 className='card__subtitle_detail'>Details</h3>
+            {description}
+          </div>
         </>
       )
     } else if (isCart) {
       return (
-        <>
+      <>
+        {productImage}
+        <div className={cardInfoWrap}>
           {name}
           {code}
           <ul className='cart__info_flex-wrap'>
             {list}
           </ul>
           {sum}
-        </>
+        </div>
+      </>
       )
     }
   }
   const card = (
-    <>
-      {productImage}
-      <div className={cardInfoWrap}>
+    <div className={cardWrap}>
         {cardInfo()}
-      </div>
-    </>
+    </div>
   )
 
   return (

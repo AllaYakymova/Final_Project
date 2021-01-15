@@ -1,25 +1,19 @@
-import React from 'react';
+import React from 'react'
 import CardConstructor from '../CardConstructor'
-import Proptypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const ShortCard = ({ product }) => {
+  const route = '/categories/' + product._id;
+
   return (
-    <>
+    <Link to={route}>
       <CardConstructor
-        isShort={true}
-        image={true}
+        isShort
+        image
         product={product}
       />
-    </>
+    </Link>
   )
-}
-
-ShortCard.propTypes = {
-  product: Proptypes.shape({
-    id: Proptypes.string.isRequired,
-    name: Proptypes.string.isRequired,
-    price: Proptypes.number.isRequired,
-  })
 }
 
 export default ShortCard

@@ -8,7 +8,7 @@ const ProductsList = () => {
 
   const list = products.map(product => {
     return (
-        <li key={product.id} className="card card_short">
+        <li key={product._id} className="card card_short">
           <ShortCard product={product} />
         </li>)
   });

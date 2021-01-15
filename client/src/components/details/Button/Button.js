@@ -1,17 +1,19 @@
 import React from 'react'
 import classNames from 'classnames'
-import Proptypes from 'prop-types'
+import PropTypes, { oneOfType } from 'prop-types'
 
 const Button = ({
-  text,
+  text = '' || {},
   onClick = null,
   type = 'button',
   isLight,
   isBlack,
+  isIterSize,
+  isIterColor,
   size26957,
   size26357,
   size26346,
-  size5757,
+  size5557,
   fz24,
   fz18,
   fz14,
@@ -22,10 +24,13 @@ const Button = ({
   const btnStyle = classNames('button', {
     button_light: isLight,
     button_black: isBlack,
+    button_iterator_size: isIterSize,
+    button_iterator: isIterColor,
+    size_5: isIterColor,
     size_269_57: size26957,
     size_263_57: size26357,
     size_263_46: size26346,
-    size_57_57: size5757,
+    size_55_57: size5557,
     fz_24: fz24,
     fz_18: fz18,
     fz_14: fz14,
@@ -43,19 +48,21 @@ const Button = ({
 }
 
 Button.propTypes = {
-  text: Proptypes.string.isRequired,
-  className: Proptypes.string,
-  onClick: Proptypes.func,
-  type: Proptypes.string,
-  isLight: Proptypes.bool,
-  isBlack: Proptypes.bool,
-  size26957: Proptypes.bool,
-  size26357: Proptypes.bool,
-  size26346: Proptypes.bool,
-  size5757: Proptypes.bool,
-  fz24: Proptypes.bool,
-  fz18: Proptypes.bool,
-  fz14: Proptypes.bool,
+  text: oneOfType([
+    PropTypes.string,
+    PropTypes.object]),
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  isLight: PropTypes.bool,
+  isBlack: PropTypes.bool,
+  size26957: PropTypes.bool,
+  size26357: PropTypes.bool,
+  size26346: PropTypes.bool,
+  size5757: PropTypes.bool,
+  fz24: PropTypes.bool,
+  fz18: PropTypes.bool,
+  fz14: PropTypes.bool,
 }
 
 export default Button

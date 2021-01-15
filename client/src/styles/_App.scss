@@ -2,6 +2,9 @@
 html {
   font-size: 10px;
 }
+a {
+  text-decoration: none;
+}
 .App {
   margin: 0 auto;
   display: flex;
@@ -16,6 +19,7 @@ html {
 .page-wrap {
   display: flex;
   justify-content: center;
+  padding-top: 1rem;
 }
 
 .header {  //temporary in the category page
