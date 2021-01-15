@@ -2,15 +2,24 @@ import React from 'react'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import Button from '../../components/details/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchedProducts } from '../../redux/actions/products/index'
+// import { fetchedProducts } from '../../redux/actions/products/index'
+import {fetchProducts} from '../../redux/ProductsSlice'
 
 const CategoryPage = () => {
-  const isLoaded = useSelector(store => store.products.isLoaded)
+  const status = useSelector(store => store.products.status)
   const dispatch = useDispatch()
 
-  const list = isLoaded && <ProductsList />
+  // useEffect(() => {
+  //   if (status === 'idle') {
+  //     dispatch(fetchProducts())
+  //   }
+  // }, [status, dispatch])
 
-  const loadProds = () => { dispatch(fetchedProducts()) }
+  const list = (status === 'succeeded' && <ProductsList />)
+
+  // const loadProds = () => { dispatch(fetchedProducts()) }
+
+  const loadProds = () => { dispatch(fetchProducts()) }
 
   return (
     <>
