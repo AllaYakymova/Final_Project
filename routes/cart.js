@@ -13,18 +13,18 @@ const {
   getCart
 } = require("../cart");
 
-// @route   POST /cart
-// @desc    Create cart
+// @route   POST /cartSlice
+// @desc    Create cartSlice
 // @access  Private
 router.post("/", passport.authenticate("jwt", { session: false }), createCart);
 
-// @route   PUT /cart
-// @desc    Update cart when adding / deleting products in cart
+// @route   PUT /cartSlice
+// @desc    Update cartSlice when adding / deleting products in cartSlice
 // @access  Private
 router.put("/", passport.authenticate("jwt", { session: false }), updateCart);
 
-// @route   PUT /cart/:productId
-// @desc    Add one product to cart
+// @route   PUT /cartSlice/:productId
+// @desc    Add one product to cartSlice
 // @access  Private
 router.put(
   "/:productId",
@@ -32,8 +32,8 @@ router.put(
   addProductToCart
 );
 
-// @route   DELETE /cart
-// @desc    Delete cart (when the order is placed or customer logging out)
+// @route   DELETE /cartSlice
+// @desc    Delete cartSlice (when the order is placed or customer logging out)
 // @access  Private
 router.delete(
   "/",
@@ -41,8 +41,8 @@ router.delete(
   deleteCart
 );
 
-// @route   DELETE /cart/:productId
-// @desc    Delete one product from cart
+// @route   DELETE /cartSlice/:productId
+// @desc    Delete one product from cartSlice
 // @access  Private
 router.delete(
   "/:productId",
@@ -50,8 +50,8 @@ router.delete(
   deleteProductFromCart
 );
 
-// @route   DELETE /cart/product/:productId
-// @desc    Delete one product from cart
+// @route   DELETE /cartSlice/product/:productId
+// @desc    Delete one product from cartSlice
 // @access  Private
 router.delete(
   "/product/:productId",
@@ -59,8 +59,8 @@ router.delete(
   decreaseCartProductQuantity
 );
 
-// @route   GET /cart
-// @desc    Get cart for customer
+// @route   GET /cartSlice
+// @desc    Get cartSlice for customer
 // @access  Private
 router.get("/", passport.authenticate("jwt", { session: false }), getCart);
 

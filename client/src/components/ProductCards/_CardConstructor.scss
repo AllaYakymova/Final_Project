@@ -4,7 +4,7 @@ $secondary-color: #847A7A;
   display: flex;
   position: relative;
 }
-// short - для краткой карточки в списке, detail - стили детальной карточки, cart - стили карточки в корзине
+// short - для краткой карточки в списке, detail - стили детальной карточки, cartSlice - стили карточки в корзине
 
 .card {
   @include flex-left;
