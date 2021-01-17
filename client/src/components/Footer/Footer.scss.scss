@@ -1,0 +1,106 @@
+body {
+  @media screen and (min-width: 320px) and (max-width: 400px) {
+    font-size: 3px;
+  }
+  @media screen and (min-width: 400px) and (max-width: 767px) {
+    font-size: 5px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 7.5px;
+  }
+  font-size: 10px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.container {
+ @media screen and (min-width: 993px) {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 481px) and (max-width: 992px) {
+    margin: 0 auto;
+    max-width: 992px;
+    min-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    margin: 0 auto;
+    max-width: 480px;
+    min-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+  padding: 0 10%;
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    height: 25em;
+    padding-top: 2em;
+  }
+  text-align: left;
+  &__link-block {
+    display: flex;
+    flex-direction: column;
+  }
+  &__link-block__header {
+      font-family: "Josefin Sans", sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 2.4em;
+      @media screen and (min-width: 0px) and (max-width: 767px) {
+        display: none;
+      }
+  }
+  &__link-list {
+    position: relative;
+    overflow: hidden;
+    @media screen and (min-width: 0px) and (max-width: 767px) 
+    {
+      max-height: 0px;
+    } 
+  }
+
+  &__link-list-active {
+    @media screen and (min-width: 0px) and (max-width: 767px) 
+    {
+      transition: height 3s;
+      height: 100%;
+      overflow: hidden;
+      display: block;
+      line-height:1;
+    } 
+
+  }
+  &__link-list-hidden {
+    @media screen and (min-width: 0px) and (max-width: 767px) 
+    {
+      transition: height 2s;
+      display: block;
+      line-height:1;
+      height: 0;
+      overflow: hidden;
+    } 
+
+  }
+  &__link {
+      font-family:"Open Sans", sans-serif;
+      font-size: 1.8em;
+      list-style-type: none;
+      margin-left: 0;
+      box-sizing: border-box;
+  }
+}

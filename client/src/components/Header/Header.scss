@@ -1,0 +1,134 @@
+
+
+@mixin displayFlex{
+    display: flex;
+    background-color: black;
+    color: white;
+    
+} 
+.header {
+    @include displayFlex;
+    justify-content: space-between; 
+    padding: 2em 0;
+    @media screen and (max-width: 767px) {
+        flex-wrap: wrap;
+    }
+    &__goods-list{
+        text-transform: uppercase;
+        font-family: "Josefin Sans", sans-serif;
+        @media screen and (min-width: 768px) {
+            margin-left: 5%;
+        } 
+        @media screen and (max-width: 767px) {
+            order: 3;
+            min-width: 90vw;
+            padding: 4em 5%;
+            border-top: 0.5px solid #574f4f;
+        }  
+    }
+    &__shop-name {
+        font-size: 5.6em;
+        margin: 0 auto;
+        font-family: 'Sofia', cursive;
+        @media screen and (max-width: 767px) {
+            margin-right: 5%;
+            font-size: 6em;
+            margin-left: 5%;
+        }
+        @media screen and (max-width: 400px) {
+            margin-right: 5%;
+            margin-right: 5%;
+            font-size: 8em;
+        }
+    }
+    &__button-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    &__links {
+        margin-right: 5%;
+        justify-content: space-between;
+        width:35%;
+        @media screen and (max-width: 767px) {
+            width: 60%;
+        } 
+    }
+    &__customer-links-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-right: 3%;
+    }
+    &__customer-link {
+        margin-bottom: 1em;
+        display: flex;
+    }
+    &__customer-link-text {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 1.6em; 
+        margin: 0 auto;
+        font-weight: 100;
+        line-height: 1.5;
+        margin-left: 0.2em;
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
+    }
+}
+.header__nav__button {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    background-color: black;
+    width: 18px;
+    height: 18px;
+    border: 0;
+    position: relative;
+    overflow: hidden;
+    outline: 0;
+    margin-bottom: 0.4em;
+    &__decoration-short-line {
+      width: 10px;
+      height: 1px;
+      background-color: white;
+      position: absolute;
+      &.active {
+        display: none;
+      }
+    }
+    &__decoration-top-line {
+      width: 18px;
+      height: 1px;
+      background-color: white;
+      position: absolute;
+      left: 0;
+      transform:  translateY(calc(-50% - 8px));
+      &.active {
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+      }
+    }
+    &__decoration-bottom-line {
+      width: 18px;
+      height: 1px;
+      background-color: white;
+      position: absolute;
+      left: 0;
+      transform: translateY(calc(-50% + 8px));
+      &.active{
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+.header > div{
+        @include displayFlex;
+        justify-content: space-between;
+        max-width: 40%;      
+}
+
+.head-nav {
+        @media screen and (min-width: 768px) {
+            display: none;  
+        }
+}
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap')
