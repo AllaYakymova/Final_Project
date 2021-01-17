@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { productsSlice } from './ProductsSlice'
+import { cartSlice } from './cartSlice'
 
 const middleware = getDefaultMiddleware({
   immutableCheck: false,
@@ -9,7 +10,8 @@ const middleware = getDefaultMiddleware({
 
 const store = configureStore({
   reducer: {
-    products: productsSlice.reducer
+    products: productsSlice.reducer,
+    cart: cartSlice.reducer
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production'

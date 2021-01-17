@@ -1,15 +1,18 @@
 import React from 'react'
-import { cart } from '../../utilities/utilities'
+import { cart, products } from '../../utilities/utilities'
 import CartCard from '../ProductCards/CartCard/CartCard'
 import { TextField } from '@material-ui/core'
 import Button from '../details/Button/Button'
 import { useSelector } from 'react-redux'
+import { productsCatalog } from '../../redux/selectors'
 
 const Cart = () => {
-  const products = useSelector(store => store.products.products)
+  const products1 = useSelector(store => store.products.products)
+  const cartProds = products1.filter(prod => cart.includes(prod.itemNo))
   let totalSum = 0;
 
   const cartList = products.map(product => {
+    console.log(cartProds, products1)
     if (cart.includes(product.itemNo)) {
       const amount = cart.filter(item => item === product.itemNo).length;
       const sum = +(amount * product.currentPrice);

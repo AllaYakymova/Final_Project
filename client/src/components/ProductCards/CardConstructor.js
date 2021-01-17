@@ -9,7 +9,6 @@ import { productsCatalog } from '../../redux/selectors'
 
 const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, favorite, total }) => {
   const products = useSelector(productsCatalog)
-  const [size, setSize] = useState('')
 
   const cardTitle = classNames('card__title', {
     card__title_short: isShort,
@@ -52,15 +51,16 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
   const productImage = (image && <img className={cardImage} src={product.imageUrls[0]} alt={product.name}/>)
 
   // For detailed product card
-  const findSameProds = useCallback(name => products.filter(item => item.name === name), [products])
+  const findSameProds = name => products.filter(item => item.name === name)
 
   // size iterator
-  const sizeIterator = useCallback(() => {
-    const sameProds = findSameProds(product.itemNo)
+  const sizeIterator = () => {
+    const sameProds = products.filter(item => item.name === product.name && item.color === product.color)
+    console.log(sameProds)
     const iterItems = sameProds.map(item => {
       return (
         <li key={item._id + item.itemNo} className='card__iterator_item'>
-          <Button onClick={() => setSize(item.size)} isIterSize text={item.size}/> ////
+          <Button onClick={() => {}} isIterSize text={item.size}/>
         </li>)
     })
     return (
@@ -68,18 +68,28 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
         {iterItems}
       </ul>
     )
-  }, [product, findSameProds])
+  }
 
   // color iterator
   const colorCircle = (color, text) => (<>
     <div className='button_iterator_color' style={{ backgroundColor: color }}/>
     <p className='button_iterator_text'>{text}</p></>)
 
-  const colorIterator = useCallback(() => {
-    const sameProds = findSameProds(product.name)
-    console.log(product.itemNo, sameProds)
-    const iterItems = sameProds.map(item => {
+  const colorIterator = () => {
+    const sameProds = findSameProds(product.name);
+    const colors = sameProds.map(item => item.color);
+    const uniqueSet = new Set(colors)
+    const uniqueColors = [...uniqueSet];
+    let arr = [];
+    uniqueColors.forEach(color => {
+      const res = sameProds.find(item => item.color === color)
+      arr = [...arr, res]
+    })
+    const iterItems = arr.map(item => {
       const route = '/categories/' + item._id
+      const col = item.color.toString();
+      // const col1 = item.color.charAt(0).toLowerCase() + item.color.slice(1);
+      console.log(col)
       return (
         <li key={item._id + item.name} className='card__iterator_item'>
           <Link to={route}>
@@ -92,7 +102,7 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
         {iterItems}
       </ul>
     )
-  }, [product, findSameProds])
+  }
 
   const description = <p className={cardText}>{product.oneMoreCustomParam.description}</p>
   const favButton = (favorite && <Button text={<FavIcon/>} isBlack size5557/>)
@@ -154,7 +164,7 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
             <h3 className='card__subtitle_detail'>Colors</h3>
             {colorIterator()}
             <h3 className='card__subtitle_detail'>Size</h3>
-
+            {sizeIterator()}
             <div className='card__buttons_wrap'>{buyButton}{favButton}</div>
             <h3 className='card__subtitle_detail'>Details</h3>
             {description}
