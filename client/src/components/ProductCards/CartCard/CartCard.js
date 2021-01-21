@@ -1,9 +1,8 @@
 import React from 'react'
 import CardConstructor from '../CardConstructor'
 
-const CartCard = ({product}) => {
-  const count = 1
-  const total = product.currentPrice * count
+const CartCard = ({product, decrementHandler, incrementHandler, number, prodSum}) => {
+  const total = product.currentPrice * number
 
   const closerMobile = <div className="closer cart__closer" onClick={() => console.log('closer-little')} />
   const closerDesktop = <div className="card__subtext_cart cart__closer-m-l" onClick={() => console.log('closer-text')}>Remove from basket</div>
@@ -12,6 +11,10 @@ const CartCard = ({product}) => {
     <>
       <CardConstructor
         total={total}
+        decrementHandler={decrementHandler}
+        incrementHandler={incrementHandler}
+        number={number}
+        prodSum={prodSum}
         isCart
         image
         product={product}

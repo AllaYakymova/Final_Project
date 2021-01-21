@@ -6,13 +6,14 @@ import FavIcon from '../details/icons/FavoriteIcon'
 import CartCounter from '../details/CartCounter/CartCounter'
 import { useDispatch, useSelector } from 'react-redux'
 import { productsCatalog } from '../../redux/selectors'
-import { addProductToCart } from '../../redux/cartSlice/index'
+import { addProductToCart, reduceProductInCart } from '../../redux/cartSlice/index'
 
-const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
+const CardConstructor = ({ product, decrementHandler, incrementHandler, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
   const products = useSelector(productsCatalog);
   const cart = useSelector(store => store.cart.cart);
   const dispatch = useDispatch();
   const [size, setSize] = useState('');
+  const [id, setId] = useState('');
 
   const cardTitle = classNames('card__title', {
     card__title_short: isShort,
@@ -60,11 +61,14 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
   // size iterator
   const sizeIterator = () => {
     const sameProds = products.filter(item => item.name === product.name && item.color === product.color)
-    // console.log(sameProds)
     const iterItems = sameProds.map(item => {
       return (
         <li key={item._id + item.itemNo} className='card__iterator_item'>
-          <Button onClick={() => setSize(item.size)} isIterSize text={item.size}/>
+          <Button onClick={() => {
+            console.log(item.size, item._id)
+            setSize(item.size)
+            setId(item._id)
+          }} isIterSize text={item.size}/>
         </li>)
     })
     return (
@@ -91,9 +95,9 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
     })
     const iterItems = arr.map(item => {
       const route = '/categories/' + item._id
-      const col = item.color.toString();
+      // const col = item.color.toString();
       // const col1 = item.color.charAt(0).toLowerCase() + item.color.slice(1);
-      console.log(col)
+      // console.log(col)
       return (
         <li key={item._id + item.name} className='card__iterator_item'>
           <Link to={route}>
@@ -110,13 +114,14 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
 
   const addToCartHandler = async (e) => {
     e.preventDefault();
-    // const item = {
-    //   itemNo: product.itemNo,
-    //   id: product._id,
-    //   size: size,
-    //   cartQuantity: 1
-    // }
-    await dispatch(addProductToCart({item: product._id, sum: product.currentPrice})); // добавляем в массив карзины только id
+    const item = {
+      itemNo: product.itemNo,
+      product: id,
+      size: size,
+      cartQuantity: 1
+    }
+    const newCart = [...cart, item]
+    await dispatch(addProductToCart({cart: newCart, sum: product.currentPrice}));
     // await dispatch(createCart(cart));
   };
 
@@ -130,28 +135,34 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
 
   // for Cart
   // amount of the product in cart
-  const calculateCartProductCount = useCallback(
-    (product) => cart.filter(item => item.id === product._id).length, //
-    [cart],
-  );
-  const cartProductAmount = calculateCartProductCount(product);
-  const [count, setCount] = useState(cartProductAmount);
+  // const cartProductAmount = () => {
+  //   const prod = cart.filter(item => item.product === product._id)
+  //   console.log(prod.cartQuantity)
+  //   return prod.cartQuantity;
+  // }
+  // const [count, setCount] = useState(cartProductAmount());
 
-  const decrementHandler = useCallback(() => {
-    setCount(count > 0 ? count - 1 : 0);
-    const index = cart.indexOf(product._id);
-    const cartNew = [...cart];
-    cartNew.splice(index, 1);
-    const sum = count === 0 ? 0 : product.price;
-    // dispatch(reduceProductInCart({cart: cartNew, sum: sum }));
-  }, [setCount, count, product, cart]);
+  // const decrementHandler = useCallback(() => {
+  //   setCount(count > 0 ? count - 1 : 0);
+  //   const prod = cart.filter(item => item.product === product._id)
+  //   prod.cartQuantity = prod.cartQuantity - 1;
+  //   console.log(prod.cartQuantity) //
+  //   const newCart = cart.map(item => item.product === product._id ? prod : item)
+  //   console.log(newCart)
+  //   const sum = count === 0 ? 0 : product.currentPrice;
+  //   dispatch(reduceProductInCart({cart: newCart, sum: sum }));
+  // }, [setCount, count, product, cart, dispatch]);
+  //
+  // const incrementHandler = useCallback(() => {
+  //   setCount(count + 1);
+  //   const prod = cart.filter(item => item.product === product._id)
+  //   prod.cartQuantity = prod.cartQuantity + 1;
+  //   const newCart = cart.map(item => item.product === product._id ? prod : item)
+  //   console.log(newCart)
+  //   dispatch(addProductToCart({item: newCart._id, sum: product.currentPrice}));
+  // }, [setCount, count, product, dispatch]);
 
-  const incrementHandler = useCallback(() => {
-    setCount(count + 1);
-    dispatch(addProductToCart({item: product._id, sum: product.price}));
-  }, [setCount, count, product]);
-
-  const counter = (isCart && <CartCounter decrementHandler={decrementHandler} incrementHandler={incrementHandler} {...props}/>)
+  const counter = (isCart && <CartCounter decrementHandler={decrementHandler} incrementHandler={incrementHandler} number={number} {...props}/>)
   const cartInfoArr = [
     {
       title: 'Price:',
@@ -180,7 +191,7 @@ const CardConstructor = ({ product, isShort, isDetail, isCart, image, buyBtn, fa
 
   const sum = (isCart && <div className='cart__info-item'>
     <div className={cardTitle}>Total:</div>
-    <div className={cardTitle}>{total} &#36;</div>
+    <div className={cardTitle}>{+prodSum} &#36;</div>
   </div>)
 
   const cardInfo = () => {

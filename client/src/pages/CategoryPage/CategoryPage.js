@@ -9,12 +9,14 @@ const CategoryPage = () => {
   const status = useSelector(store => store.products.status)
   const dispatch = useDispatch()
 
-  useEffect(async () => {
-    if (status === 'idle') {
-      await dispatch(fetchProducts())
-      await dispatch(fetchCatalog())
+  useEffect(() => {
+    const x = async () => {
+      if (status === 'idle') {
+        await dispatch(fetchProducts())
+      }
     }
-  }, [status, dispatch])
+    x().then(() => dispatch(fetchCatalog()))
+  }, [dispatch])
 
   const list = (status === 'succeeded' && <ProductsList/>)
 

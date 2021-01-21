@@ -122,13 +122,13 @@ exports.getProducts = (req, res, next) => {
 exports.getProductById = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
-  Product.findOne({
-    id: req.params._id
+  Product.find({
+    itemNo: req.params.itemNo
   })
     .then(product => {
       if (!product) {
         res.status(400).json({
-          message: `Product with itemNo ${req.params._id} is not found`
+          message: `Product with itemNo ${req.params.itemNo} is not found`
         });
       } else {
         res.json(product);

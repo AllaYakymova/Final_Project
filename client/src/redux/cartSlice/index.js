@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {number} from 'prop-types'
-import { fetchProducts } from '../ProductsSlice'
 
 export const createCart = createAsyncThunk(
   'cart/createCart',
@@ -36,11 +34,24 @@ export const cartSlice = createSlice({
     error: null,
   },
   reducers: {
-    addProductToCart: (state, action
-    ) => {
-      const { item, sum } = action.payload
-      state.cart = [...state.cart, item];
+    addProductToCart: (state, action) => {
+      const { cart, sum } = action.payload
+      state.cart = cart;
       state.cartSum = state.cartSum + sum
+    },
+
+    reduceProductInCart: (state, action) => {
+      const { cart, sum } = action.payload
+      state.cart = cart;
+      state.cartSum = state.cartSum - sum
+    },
+    removeProductFromCart: (state, action) => {
+      const { cart, sum } = action.payload
+      state.cart = cart;
+      state.cartSum = state.cartSum - sum
+    },
+    createOrder: (state, action) => {
+      state.order = action.payload;
     },
   },
   extraReducers: {
@@ -58,4 +69,4 @@ export const cartSlice = createSlice({
   },
 })
 
-export const { addProductToCart } = cartSlice.actions;
+export const { addProductToCart, reduceProductInCart, removeProductFromCart } = cartSlice.actions;

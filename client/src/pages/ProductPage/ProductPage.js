@@ -19,7 +19,11 @@ const ProductPage = ({ match = {} }) => {
         <Link to='/cart'>
           <Button text="Go to cart" isBlack size26346 mrrauto/>
         </Link>
+
         <DetailCard product={productTarget} />
+        <Link to='/categories'>
+          <Button text="Go to catalog" isBlack size26346 mrrauto/>
+        </Link>
       </div>
   )
 }
