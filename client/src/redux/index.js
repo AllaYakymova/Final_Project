@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { productsSlice } from './ProductsSlice'
+import { paginationSlice } from './paginationSlice'
 import { cartSlice } from './cartSlice'
 
 const middleware = getDefaultMiddleware({
@@ -11,6 +12,7 @@ const middleware = getDefaultMiddleware({
 const store = configureStore({
   reducer: {
     products: productsSlice.reducer,
+    paginate: paginationSlice.reducer,
     cart: cartSlice.reducer
   },
   middleware,

@@ -1,15 +1,22 @@
-import React, { useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useCallback, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import PropTypes from 'prop-types'
-import { productsCatalog } from '../../redux/selectors'
+import { productsCatalog, productsPerPage, currentPage, currentProducts } from '../../redux/selectors'
+import { setCurrentProducts } from '../../redux/paginationSlice'
+// import Pagination from '../Pagination/Pagination'
 
 const ProductsList = () => {
   const products = useSelector(productsCatalog);
-  const menProd = products.filter(item => item.categories === 'men') //
+  // const status = useSelector(store => store.products.status);
+  const prodsPerPage = useSelector(productsPerPage);
+  const current = useSelector(currentPage);
+  const currentProds = useSelector(currentProducts);
+  const dispatch = useDispatch();
+  const filteredProd = products.filter(item => item.categories === 'men') //
 
   const getUniqueList = useCallback(() => {
-    const itemNo = menProd.map(item => item.itemNo);
+    const itemNo = filteredProd.map(item => item.itemNo);
     const uniqueSet = new Set(itemNo)
     const uniqueArr = [...uniqueSet];
     let arr = [];
@@ -20,23 +27,36 @@ const ProductsList = () => {
       }
     })
     return arr
-  }, [products, menProd]);
-
+  }, [products, filteredProd]);
   const uniqueList = getUniqueList();
 
-  const list = uniqueList.map(product => {
+  // setting of what products display
+  useEffect(() => {
+    const indexOfLastProduct = current * prodsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - prodsPerPage;
+    const prods = uniqueList.slice(indexOfFirstProduct, indexOfLastProduct);
+    dispatch(setCurrentProducts(prods));
+    // console.log(uniqueList);
+  }, []);
+
+  // [current, prodsPerPage, uniqueList, dispatch]
+
+  const list = currentProds.map(product => {
     return (
         <li key={product._id} className="card card_short">
           <ShortCard product={product} />
         </li>)
   });
 
+  // const pagination = (status === 'succeeded' && <Pagination filteredProd={filteredProd}/>);
+  // console.log(pagination)
+
   return (
-      <>
+      <div>
         <ul className="cards-wrap">
           {list}
         </ul>
-      </>
+      </div>
   )
 }
 

@@ -54,6 +54,24 @@ $light-color: #E5E5E5;;
         text-decoration: underline;
       }
     }
+    &_paginate_left,
+    &_paginate_right {
+      display: block;
+      height: 15px;
+      width: 15px;
+      background-color: transparent;
+      border-bottom: 2px solid $main-background;
+      border-left: 2px solid $main-background;
+    }
+    &_paginate_left {
+      transform: rotate(45deg);
+    }
+    &_paginate_right {
+      transform: rotate(220deg);
+    }
+    &_counter {
+      background-color: transparent;
+    }
 
     &_color {
       box-shadow: 1px 1px 2px #8f8f8f;

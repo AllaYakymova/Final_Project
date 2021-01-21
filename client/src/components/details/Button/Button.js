@@ -19,7 +19,11 @@ const Button = ({
   fz14,
   mrt55,
   mrt85,
-  mrrauto
+  mrrauto,
+  counter = false,
+  paginateDecrem = false,
+  paginateIncrem = false,
+
 }) => {
   const btnStyle = classNames('button', {
     button_light: isLight,
@@ -27,6 +31,9 @@ const Button = ({
     button_iterator_size: isIterSize,
     button_iterator: isIterColor,
     size_5: isIterColor,
+    button_paginate_left: paginateDecrem,
+    button_paginate_right: paginateIncrem,
+    button_counter: counter,
     size_269_57: size26957,
     size_263_57: size26357,
     size_263_46: size26346,
@@ -36,7 +43,7 @@ const Button = ({
     fz_14: fz14,
     mr_t_55: mrt55,
     mr_t_85: mrt85,
-    mr_r_auto: mrrauto
+    mr_r_auto: mrrauto,
 
     // еще добавить классы для ховера и онклика
   })

@@ -1,22 +1,22 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import Button from '../../components/details/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-// import { fetchedProducts } from '../../redux/actions/products/index'
-import {fetchProducts} from '../../redux/ProductsSlice'
+import { fetchProducts, fetchCatalog } from '../../redux/ProductsSlice'
 import { Link } from 'react-router-dom'
 
 const CategoryPage = () => {
   const status = useSelector(store => store.products.status)
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect(async () => {
     if (status === 'idle') {
-      dispatch(fetchProducts())
+      await dispatch(fetchProducts())
+      await dispatch(fetchCatalog())
     }
   }, [status, dispatch])
 
-  const list = (status === 'succeeded' && <ProductsList />)
+  const list = (status === 'succeeded' && <ProductsList/>)
 
   // const loadProds = () => { dispatch(fetchedProducts()) }
   // const loadProds = () => { dispatch(fetchProducts()) }
@@ -42,5 +42,3 @@ const CategoryPage = () => {
 }
 
 export default CategoryPage
-
-// <Button text="load all products" onClick={loadProds} isBlack size26346 mrrauto/>

@@ -4,19 +4,28 @@ import axios from 'axios'
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
-    const response = await axios.get(process.env.REACT_APP_PRODUCTS_API, {
-      params: {
-        results: 1,
-        inc: []
-      }
-    })
+    const response = await axios.get(process.env.REACT_APP_PRODUCTS_API)
     return response.data
   }
 )
+
+export const fetchCatalog = createAsyncThunk(
+  'products/fetchCatalog',
+  async () => {
+    const response = await axios.get(process.env.REACT_APP_CATALOG_API, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    return response.data.map(item => item.name)
+  }
+)
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState: {
     products: [],
+    catalogList: [],
     status: 'idle',
     error: null
   },
@@ -29,6 +38,17 @@ export const productsSlice = createSlice({
       state.products = action.payload
     },
     [fetchProducts.rejected]: (state, action) => {
+      state.status = 'failed'
+      state.error = action.error.message
+    },
+    [fetchCatalog.pending]: (state) => {
+      state.status = 'loading'
+    },
+    [fetchCatalog.fulfilled]: (state, action) => {
+      state.status = 'succeeded'
+      state.catalogList = action.payload
+    },
+    [fetchCatalog.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
     }

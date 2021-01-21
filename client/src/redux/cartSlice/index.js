@@ -1,28 +1,47 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import {number} from 'prop-types'
+import { fetchProducts } from '../ProductsSlice'
 
 export const createCart = createAsyncThunk(
   'cart/createCart',
-  async () => {
-    const response = await axios.post(process.env.REACT_APP_CART_API, [])
+  async (cart) => {
+    const response = await axios.post(process.env.REACT_APP_CART_API, {
+      body: cart,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(response)
     return response.data
-  }
+  },
 )
 
-// let [u1, u2] = await Promise.all([
-//   axios.get('https://api.github.com/users/janbodnar'),
-//   axios.get('https://api.github.com/users/symfony')
-// ]);
-//
-// console.log(`Jan Bodnar: ${u1.data.created_at}`);
-// console.log(`Symfony: ${u2.data.created_at}`);
+// export const fetchOneProduct = createAsyncThunk(
+//   'products/fetchProducts',
+//   async (id) => {
+//     const url = `${process.env.REACT_APP_PRODUCTS_API}/${id}`
+//     const response = await axios.get(url)
+//     return response.data
+//   }
+// )
 
 export const cartSlice = createSlice({
-  name: 'products',
+  name: 'cart',
   initialState: {
     cart: [],
+    cartSum: 0,
+    // order: [],
     status: 'idle',
-    error: null
+    error: null,
+  },
+  reducers: {
+    addProductToCart: (state, action
+    ) => {
+      const { item, sum } = action.payload
+      state.cart = [...state.cart, item];
+      state.cartSum = state.cartSum + sum
+    },
   },
   extraReducers: {
     [createCart.pending]: (state) => {
@@ -35,6 +54,8 @@ export const cartSlice = createSlice({
     [createCart.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
-    }
-  }
+    },
+  },
 })
+
+export const { addProductToCart } = cartSlice.actions;

@@ -94,6 +94,8 @@ exports.getCategories = (req, res, next) => {
 };
 
 exports.getCategory = (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
   Catalog.findOne({ id: req.params.id })
     .then(category => {
       if (!category) {
