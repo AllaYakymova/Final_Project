@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { productsCatalog } from '../../redux/selectors'
 import { addProductToCart, reduceProductInCart } from '../../redux/cartSlice/index'
 
-const CardConstructor = ({ product, decrementHandler, incrementHandler, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
+const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
   const products = useSelector(productsCatalog);
   const cart = useSelector(store => store.cart.cart);
+  // const cartSum = useSelector(store => store.cart.cartSum).toFixed(2);
   const dispatch = useDispatch();
   const [size, setSize] = useState('');
   const [id, setId] = useState('');
@@ -121,19 +122,40 @@ const CardConstructor = ({ product, decrementHandler, incrementHandler, number, 
       cartQuantity: 1
     }
     const newCart = [...cart, item]
-    await dispatch(addProductToCart({cart: newCart, sum: product.currentPrice}));
+    await dispatch(addProductToCart(newCart));
     // await dispatch(createCart(cart));
   };
 
   const description = <p className={cardText}>{product.oneMoreCustomParam.description}</p>
   const favButton = (favorite && <Button text={<FavIcon/>} isBlack size5557/>)
   const buyButton = (buyBtn && <Button text="Add to basket" onClick={addToCartHandler} isBlack size26357 fz18/>)
-
   const titleBlock = <div className='detail__info-wrap detail__info-wrap_mobile'>{name}{price}{code}</div>
-
   const mobilePhotoBlock = (<div className={cardInfoWrap}>{productImage}{titleBlock}</div>)
 
   // for Cart
+  const decrementHandler = useCallback(() => {
+    const prodArr = cart.filter(item => item.product === product._id);
+    const prod = { ...prodArr[0] };
+    let newCart;
+    if (prod.cartQuantity > 0) {
+      prod.cartQuantity = prod.cartQuantity - 1;
+      console.log(prod.cartQuantity)
+      newCart = cart.map(item => item.product === product._id ? prod : item)
+    } else if (prod.cartQuantity === 0) {
+      newCart = cart;
+    }
+    dispatch(reduceProductInCart(newCart));
+  }, [cart, product, dispatch]);
+
+  const incrementHandler = useCallback(() => {
+    const prodArr = cart.filter(item => item.product === product._id)
+    const prod = {...prodArr[0]};
+    prod.cartQuantity = prod.cartQuantity + 1;
+    const newCart = cart.map(item => item.product === product._id ? prod : item)
+    console.log(prod.cartQuantity, newCart)
+    dispatch(addProductToCart(newCart));
+  }, [cart, product, dispatch]);
+
   // amount of the product in cart
   // const cartProductAmount = () => {
   //   const prod = cart.filter(item => item.product === product._id)
@@ -141,7 +163,6 @@ const CardConstructor = ({ product, decrementHandler, incrementHandler, number, 
   //   return prod.cartQuantity;
   // }
   // const [count, setCount] = useState(cartProductAmount());
-
   // const decrementHandler = useCallback(() => {
   //   setCount(count > 0 ? count - 1 : 0);
   //   const prod = cart.filter(item => item.product === product._id)

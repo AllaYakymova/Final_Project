@@ -1,12 +1,13 @@
 import React from 'react'
+import Button from '../Button/Button'
 
 const CartCounter = ({incrementHandler, decrementHandler, number}) => {
   const count = (number >= 0 ? number : 1)
   const counter = (
       <div className="cart-counter">
-        <span onClick={decrementHandler}>-</span>
+        <Button onClick={decrementHandler} text='-' transparent/>
         <span className="cart-counter__scoreboard">{count}</span>
-        <span onClick={incrementHandler}>+</span>
+        <Button onClick={incrementHandler} text='+' transparent/>
       </div>)
 
   return (

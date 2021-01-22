@@ -35,15 +35,13 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addProductToCart: (state, action) => {
-      const { cart, sum } = action.payload
-      state.cart = cart;
-      state.cartSum = state.cartSum + sum
+      state.cart = action.payload;
     },
-
+    setCartSum: (state, action) => {
+      state.cartSum = action.payload
+    },
     reduceProductInCart: (state, action) => {
-      const { cart, sum } = action.payload
-      state.cart = cart;
-      state.cartSum = state.cartSum - sum
+      state.cart = action.payload;
     },
     removeProductFromCart: (state, action) => {
       const { cart, sum } = action.payload
@@ -69,4 +67,4 @@ export const cartSlice = createSlice({
   },
 })
 
-export const { addProductToCart, reduceProductInCart, removeProductFromCart } = cartSlice.actions;
+export const { addProductToCart, reduceProductInCart, setCartSum, removeProductFromCart } = cartSlice.actions;
