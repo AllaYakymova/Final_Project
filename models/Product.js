@@ -47,11 +47,11 @@ const ProductSchema = new Schema(
     cssStyles: {
       type: String,
     },
-    sizes: [
+    size:
       {
         type: String,
       },
-    ],
+
     productUrl: {
       type: String,
     },

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport"); // multer for parsing multipart form data (files)
+// const passport = require("passport"); // multer for parsing multipart form data (files)
 
 //Import controllers
 const {
@@ -15,7 +15,7 @@ const {
 // @access  Private
 router.post(
   "/",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   addSlide
 );
 
@@ -24,7 +24,7 @@ router.post(
 // @access  Private
 router.put(
   "/:customId",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   updateSlide
 );
 
@@ -33,7 +33,7 @@ router.put(
 // @access  Private
 router.delete(
   "/:customId",
-  passport.authenticate("jwt-admin", { session: false }),
+  // passport.authenticate("jwt-admin", { session: false }),
   deleteSlide
 );
 
