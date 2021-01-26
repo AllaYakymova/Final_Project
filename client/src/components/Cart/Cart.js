@@ -3,7 +3,7 @@ import CartCard from '../ProductCards/CartCard/CartCard'
 import { TextField } from '@material-ui/core'
 import Button from '../details/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import {setCartSum} from '../../redux/cartSlice'
+import { setCartSum, createCart } from '../../redux/cartSlice'
 import axios from 'axios'
 
 const Cart = () => {
@@ -47,6 +47,21 @@ const Cart = () => {
     return res
   }
 
+  // const createNewCart = (cart) => {
+  //   const xxx = cart.map(item => {
+  //     return {
+  //       product: item.product,
+  //       size: item.size,
+  //       cartQuantity: item.cartQuantity
+  //     }
+  //   })
+  //   const cartData = {
+  //     products: xxx
+  //   };
+  //   console.log(JSON.stringify(cartData))
+  //   dispatch(createCart(JSON.stringify(cartData)));
+  // }
+
   const cartTotalBlockMobile = (
     <span className='cart__total-block-mobile'><h2 className="cart__text cart__text-title">SHOPPING BAG TOTAL</h2><div
       className="cart__total"><form noValidate autoComplete="off" className='mb3'><p className="cart__text_12 mb1">ADD A DISCOUNT CODE</p><TextField
@@ -72,10 +87,10 @@ const Cart = () => {
         className="cart__text cart__text-title_18">{cartSum} &#36;</p></div>
       <Button text='CHECKOUT' isBlack size26357 fz18 onClick={() => {}}/></div>)
 
-  const shopButton = (<span className='cart__shop-button'><Button text='KEEP SHOPPING' isBlack size26957 fz18
-                                                                  onClick={() => console.log('test-back')}/></span>)
-
-  const paginatorLeft = <div><div className="paginator"/></div>
+  // const shopButton = (<span className='cart__shop-button'><Button text='KEEP SHOPPING' isBlack size26957 fz18
+  //                                                                 onClick={() => console.log('test-back')}/></span>)
+  //
+  // const paginatorLeft = <div><div className="paginator"/></div>
 
   return (
     <div className="cart-wrap">
@@ -92,7 +107,3 @@ const Cart = () => {
 }
 
 export default Cart
-
-// {paginatorLeft}
-// <h3 className="cart__text-title-phone">Shopping bag</h3>
-// {shopButton}

@@ -1,28 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { client } from '../../utilities/api_client'
 
 export const createCart = createAsyncThunk(
   'cart/createCart',
   async (cart) => {
-    const response = await axios.post(process.env.REACT_APP_CART_API, {
-      body: cart,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    console.log(response)
-    return response.data
-  },
+    const response = await client.post(process.env.REACT_APP_CART_API, { cart: cart })
+    console.log(response.cart)
+    return response.cart
+  }
 )
-
-// export const fetchOneProduct = createAsyncThunk(
-//   'products/fetchProducts',
-//   async (id) => {
-//     const url = `${process.env.REACT_APP_PRODUCTS_API}/${id}`
-//     const response = await axios.get(url)
-//     return response.data
-//   }
-// )
 
 export const cartSlice = createSlice({
   name: 'cart',

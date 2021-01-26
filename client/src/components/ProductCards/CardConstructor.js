@@ -11,7 +11,6 @@ import { addProductToCart, reduceProductInCart } from '../../redux/cartSlice/ind
 const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
   const products = useSelector(productsCatalog);
   const cart = useSelector(store => store.cart.cart);
-  // const cartSum = useSelector(store => store.cart.cartSum).toFixed(2);
   const dispatch = useDispatch();
   const [size, setSize] = useState('');
   const [id, setId] = useState('');
@@ -123,7 +122,6 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
     }
     const newCart = [...cart, item]
     await dispatch(addProductToCart(newCart));
-    // await dispatch(createCart(cart));
   };
 
   const description = <p className={cardText}>{product.oneMoreCustomParam.description}</p>

@@ -8,7 +8,6 @@ import { setCurrentProducts } from '../../redux/paginationSlice'
 
 const ProductsList = () => {
   const products = useSelector(productsCatalog);
-  // const status = useSelector(store => store.products.status);
   const prodsPerPage = useSelector(productsPerPage);
   const current = useSelector(currentPage);
   const currentProds = useSelector(currentProducts);
