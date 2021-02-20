@@ -2,15 +2,15 @@ import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import PropTypes from 'prop-types'
-import { productsCatalog, productsPerPage, currentPage, currentProducts } from '../../redux/selectors'
-import { setCurrentProducts } from '../../redux/paginationSlice'
+import { getProducts, getProductsPerPage, getCurrentPage, getCurrentProducts } from '../../redux/selectors/products/selectors'
+import actionsWithProducts from '../../redux/actions/products/';
 // import Pagination from '../Pagination/Pagination'
 
 const ProductsList = () => {
-  const products = useSelector(productsCatalog);
-  const prodsPerPage = useSelector(productsPerPage);
-  const current = useSelector(currentPage);
-  const currentProds = useSelector(currentProducts);
+  const products = useSelector(getProducts);
+  const prodsPerPage = useSelector(getProductsPerPage);
+  const current = useSelector(getCurrentPage);
+  const currentProds = useSelector(getCurrentProducts);
   const dispatch = useDispatch();
   const filteredProd = products.filter(item => item.categories === 'men') //
 
@@ -34,7 +34,7 @@ const ProductsList = () => {
     const indexOfLastProduct = current * prodsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - prodsPerPage;
     const prods = uniqueList.slice(indexOfFirstProduct, indexOfLastProduct);
-    dispatch(setCurrentProducts(prods));
+    dispatch(actionsWithProducts.setCurrentProducts(prods));
     // console.log(uniqueList);
   }, []);
 

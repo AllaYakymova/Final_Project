@@ -5,11 +5,11 @@ import Button from '../details/Button/Button'
 import FavIcon from '../details/icons/FavoriteIcon'
 import CartCounter from '../details/CartCounter/CartCounter'
 import { useDispatch, useSelector } from 'react-redux'
-import { productsCatalog } from '../../redux/selectors'
+import { getProducts } from '../../redux/selectors/products/selectors'
 import { addProductToCart, reduceProductInCart } from '../../redux/cartSlice/index'
 
 const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
-  const products = useSelector(productsCatalog);
+  const products = useSelector(getProducts);
   const cart = useSelector(store => store.cart.cart);
   const dispatch = useDispatch();
   const [size, setSize] = useState('');

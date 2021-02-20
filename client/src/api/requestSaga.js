@@ -9,8 +9,7 @@ export const apiRequestAction = ({ baseUrl, query, data, method, isAuth, actionT
       data: data,
       config: {
         method: method || 'GET',
-        isEditable: isAuth,
-        token: process.env.REACT_APP_ACCESS_TOKEN,
+        isAuth: isAuth
       },
     },
     dispatchAction: actionType,
@@ -19,6 +18,7 @@ export const apiRequestAction = ({ baseUrl, query, data, method, isAuth, actionT
 
 export function * apiRequestHandler (requestAction) {
   const { request, dispatchAction } = requestAction;
+  console.log(requestAction);
   try {
     yield put(dispatchAction.start());
     const response = yield call(() => client({

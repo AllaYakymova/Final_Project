@@ -1,8 +1,8 @@
 import { all } from '@redux-saga/core/effects';
-import {watchFetchProducts} from './fetchProductesSaga/';
+import watchProductsSaga from './productsSaga';
 
 export default function * rootSaga () {
   yield all([
-    watchFetchProducts(),
+    watchProductsSaga(),
   ]);
 }

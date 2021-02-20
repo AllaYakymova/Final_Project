@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Button from '../details/Button/Button';
 import { setCurrentPage } from '../../redux/paginationSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { productsPerPage, productsCatalog, currentPage } from '../../redux/selectors';
+import { productsPerPage, productsCatalog, currentPage } from '../../redux/selectors/products/selectors';
 
 const Pagination = ({ filteredProd }) => {
   const prodsPerPage = useSelector(productsPerPage);

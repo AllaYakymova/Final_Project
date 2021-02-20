@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ProductsList from '../../components/ProductsList/ProductsList'
 import Button from '../../components/details/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts, fetchCatalog } from '../../redux/ProductsSlice'
+import actionsWithProducts from '../../redux/actions/products/'
 import { Link } from 'react-router-dom'
 
 const CategoryPage = () => {
@@ -10,12 +10,10 @@ const CategoryPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const x = async () => {
-      if (status === 'idle') {
-        await dispatch(fetchProducts())
-      }
+    if (status === 'idle') {
+      dispatch(actionsWithProducts.fetchFilteredProducts.request())
     }
-    x().then(() => dispatch(fetchCatalog()))
+    dispatch(actionsWithProducts.fetchCatalog.request())
   }, [dispatch])
 
   const list = (status === 'succeeded' && <ProductsList/>)

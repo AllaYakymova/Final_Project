@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react'
 import DetailCard from '../../components/ProductCards/DetailCard/DetailCard'
 import { useSelector } from 'react-redux'
-import { productsCatalog } from '../../redux/selectors'
+import { getProducts } from '../../redux/selectors/products/selectors'
 import Button from '../../components/details/Button/Button'
 import { Link } from 'react-router-dom'
 // import PropTypes from 'prop-types';
 
 const ProductPage = ({ match = {} }) => {
-  const products = useSelector(productsCatalog)
+  const products = useSelector(getProducts)
   const {
     params: {product}
   } = match

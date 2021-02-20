@@ -36,9 +36,15 @@ const API = {
         SUCCESS: 'products/fetchFilteredProducts_success',
         ERROR: 'products/fetchFilteredProducts_error'
       },
-      PAGE: 'products/setCurrentPage',
-      PRODUCTS_PER_PAGE: 'products/setProductsPerPage',
+      FETCH_CATALOG: {
+        REQUEST: 'products/fetchCatalog',
+        START: 'products/fetchCatalog_start',
+        SUCCESS: 'products/fetchCatalog_success',
+        ERROR: 'products/fetchCatalog_error'
+      },
+      CURRENT_PRODUCTS: 'products/setCurrentProducts',
       CURRENT_PAGE: 'products/setCurrentPage',
+      PRODUCTS_PER_PAGE: 'products/setProductsPerPage',
     },
   },
   CART: {
