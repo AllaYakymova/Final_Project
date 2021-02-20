@@ -28,15 +28,9 @@ export function * apiRequestHandler (requestAction) {
       token: request.config.token,
       method: request.config.method,
       data: request.data,
-    })
-      .then(res => res)
-      .catch(e => e.message));
+    }));
     yield put(dispatchAction.success(response));
   } catch (e) {
     yield put(dispatchAction.error(e.message));
   }
 }
-
-// export function* watchers(API) {
-//   yield takeEvery(API, apiRequestHandler);
-// }
