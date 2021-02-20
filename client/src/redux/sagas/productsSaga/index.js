@@ -5,7 +5,7 @@ import { call, takeEvery } from '@redux-saga/core/effects'
 function * onGetProducts () {
   const getProductsRequest = apiRequestAction({
     baseUrl: 'http://localhost:5000/api/products',
-    actionType: actionsWithProducts.fetchFilteredProducts,
+    actionType: actionsWithProducts.fetchAllProducts,
   });
   yield call(apiRequestHandler, getProductsRequest);
 }
@@ -19,7 +19,7 @@ function * onGetCatalog () {
 }
 
 function * watchProductsSaga () {
-  yield takeEvery(actionsWithProducts.fetchFilteredProducts.request, onGetProducts);
+  yield takeEvery(actionsWithProducts.fetchAllProducts.request, onGetProducts);
   yield takeEvery(actionsWithProducts.fetchCatalog.request, onGetCatalog)
 }
 

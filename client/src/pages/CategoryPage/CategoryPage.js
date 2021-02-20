@@ -10,9 +10,7 @@ const CategoryPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(actionsWithProducts.fetchFilteredProducts.request())
-    }
+    dispatch(actionsWithProducts.fetchAllProducts.request())
     dispatch(actionsWithProducts.fetchCatalog.request())
   }, [dispatch])
 

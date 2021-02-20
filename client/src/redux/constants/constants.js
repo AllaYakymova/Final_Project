@@ -1,7 +1,3 @@
-export const FETCH_PRODUCTS = 'products/fetchProducts';
-export const PRODUCTS_REQUEST_SUCCESS = 'products/productsRequestSuccess';
-export const PRODUCTS_REQUEST_ERROR = 'products/productsRequestError';
-export const PRODUCTS_REQUEST_IN_PROCESS = 'products/productsRequestInProcess';
 
 const API = {
   AUTH: {
@@ -56,6 +52,14 @@ const API = {
         SUCCESS: 'cart/createCart_success',
         ERROR: 'cart/createCart_error'
       },
+      FETCH_CART_PRODUCTS: {
+        REQUEST: 'cart/fetchCartProducts',
+        START: 'cart/fetchCartProducts_start',
+        SUCCESS: 'cart/fetchCartProducts_success',
+        ERROR: 'cart/fetchCartProducts_error'
+      },
+      CREATE_LOCAL_CART: 'cart/createLocalCart',
+      SET_CART_SUM: 'cart/setCartSum',
       ADD_PRODUCT: 'cart/addProductToCart',
       REDUCE_PRODUCT_AMOUNT: 'cart/reduceProductInCart',
       REMOVE_PRODUCT: 'cart/removeProductFromCart',

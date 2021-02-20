@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import actionsWithProducts from '../../actions/products/';
 
 const initialState = {
-  products: [],
+  productsList: [],
   catalogList: [],
   currentProducts: [],
   currentPage: 1,
@@ -12,14 +12,14 @@ const initialState = {
 };
 
 const productsReducer = createReducer(initialState, {
-  [actionsWithProducts.fetchFilteredProducts.start]: (state) => {
+  [actionsWithProducts.fetchAllProducts.start]: (state) => {
     state.status = 'loading';
   },
-  [actionsWithProducts.fetchFilteredProducts.success]: (state, action) => {
+  [actionsWithProducts.fetchAllProducts.success]: (state, action) => {
     state.status = 'succeeded';
-    state.products = action.payload;
+    state.productsList = action.payload;
   },
-  [actionsWithProducts.fetchFilteredProducts.error]: (state, action) => {
+  [actionsWithProducts.fetchAllProducts.error]: (state, action) => {
     state.status = 'failed';
     state.error = action.payload;
   },

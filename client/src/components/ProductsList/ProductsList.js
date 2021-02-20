@@ -2,45 +2,21 @@ import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import PropTypes from 'prop-types'
-import { getProducts, getProductsPerPage, getCurrentPage, getCurrentProducts } from '../../redux/selectors/products/selectors'
-import actionsWithProducts from '../../redux/actions/products/';
+import { getProducts, getProductsPerPage, getCurrentPage, getCurrentProducts, getFilteredProducts } from '../../redux/selectors/products/selectors'
 // import Pagination from '../Pagination/Pagination'
 
 const ProductsList = () => {
   const products = useSelector(getProducts);
   const prodsPerPage = useSelector(getProductsPerPage);
   const current = useSelector(getCurrentPage);
-  const currentProds = useSelector(getCurrentProducts);
+  // const currentProds = useSelector(getFilteredProducts('men'));
   const dispatch = useDispatch();
-  const filteredProd = products.filter(item => item.categories === 'men') //
 
-  const getUniqueList = useCallback(() => {
-    const itemNo = filteredProd.map(item => item.itemNo);
-    const uniqueSet = new Set(itemNo)
-    const uniqueArr = [...uniqueSet];
-    let arr = [];
-    uniqueArr.forEach((item) => {
-      if (arr.indexOf(item) === -1) {
-        const res = products.find(prod => prod.itemNo === item)
-        arr = [...arr, res]
-      }
-    })
-    return arr
-  }, [products, filteredProd]);
-  const uniqueList = getUniqueList();
-
-  // setting of what products display
   useEffect(() => {
-    const indexOfLastProduct = current * prodsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - prodsPerPage;
-    const prods = uniqueList.slice(indexOfFirstProduct, indexOfLastProduct);
-    dispatch(actionsWithProducts.setCurrentProducts(prods));
-    // console.log(uniqueList);
-  }, []);
+    // dispatch(actionsWithProducts.setCurrentProducts(currentProds));
+  }, [prodsPerPage, current, dispatch]);
 
-  // [current, prodsPerPage, uniqueList, dispatch]
-
-  const list = currentProds.map(product => {
+  const list = products.map(product => {
     return (
         <li key={product._id} className="card card_short">
           <ShortCard product={product} />

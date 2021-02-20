@@ -3,38 +3,36 @@ import CartCard from '../ProductCards/CartCard/CartCard'
 import { TextField } from '@material-ui/core'
 import Button from '../details/Button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCartSum, createCart } from '../../redux/cartSlice'
-import axios from 'axios'
+import { getCartSum, getLocalCart } from '../../redux/selectors/cart'
+import client from '../../api/client'
+import actionsWithCart from '../../redux/actions/cart'
 
 const Cart = () => {
-  const cart = useSelector(store => store.cart.cart)
-  const cartSum = useSelector(store => store.cart.cartSum)
-  const [cartProds, setCartProds] = useState([]);
-  const dispatch = useDispatch();
+  const localCart = useSelector(getLocalCart)
+  const cartSum = useSelector(getCartSum)
+  const [cartProds, setCartProds] = useState([])
+  const dispatch = useDispatch()
 
   const GetCartProducts = (cart) => {
-    const fetchData = async (product) => {
-      const result = axios.get(`${process.env.REACT_APP_PRODUCTS_API}/${product.itemNo}`)
-      return (await result).data
-    }
     let cartProducts = []
-    cart.forEach(prod => {
-      fetchData(prod).then(res => {
-        const product = res.filter(i => i.size === prod.size)
-        cartProducts = [...product, ...cartProducts]
-        setCartProds(cartProducts)
+    cart.forEach(async (prod) => {
+      const response = await client({
+        baseURL: `http://localhost:5000/api/products/${prod.itemNo}`,
       })
+      const product = response.filter(i => i.size === prod.size)
+      cartProducts = [...product, ...cartProducts]
+      setCartProds(cartProducts)
     })
   }
 
   useEffect(() => {
-    GetCartProducts(cart)
-  }, [cart.length])
+    GetCartProducts(localCart)
+  }, [localCart.length])
 
   const cartList = (cartProds) => {
     let sum = 0
     const res = cartProds.map(product => {
-      const prod = cart.filter(item => item.product === product._id)
+      const prod = localCart.filter(item => item.product === product._id)
       const amount = prod[0].cartQuantity
       const prodSum = amount * product.currentPrice
       sum = sum + prodSum
@@ -43,7 +41,7 @@ const Cart = () => {
           <CartCard product={product} number={amount} prodSum={Math.floor(prodSum * 100) / 100}/>
         </li>)
     })
-    dispatch(setCartSum(sum))
+    dispatch(actionsWithCart.setCartSum(sum))
     return res
   }
 
@@ -72,7 +70,7 @@ const Cart = () => {
       className="cart__text cart__text-subtitle">free</p></div><div className='cart__info-item'><p
       className="cart__text cart__text-title">TOTAL</p><p
       className="cart__text cart__text-title_18">{cartSum} &#36;</p></div><Button text='CHECKOUT' isBlack size26357 fz18
-                                                                          onClick={() => {}}/></div></span>)
+                                                                                  onClick={() => {}}/></div></span>)
 
   const cartTotalBlockDesktop = (
     <div className="cart__total cart__total-block-desktop"><h2 className="cart__text cart__text-title">SHOPPING BAG

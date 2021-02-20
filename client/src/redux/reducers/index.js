@@ -1,6 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import fetchProductsReducer from '../reducers/products/index'
+import productsReducer from '../reducers/products/';
+import cartReducer from '../reducers/cart/'
 
 export const rootReducer = combineReducers({
-  products: fetchProductsReducer
+  products: productsReducer,
+  cart: cartReducer
 })

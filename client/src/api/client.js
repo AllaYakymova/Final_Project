@@ -9,7 +9,9 @@ async function client ({ baseURL, query, isAuth, data, method, token}) {
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: requestToken(isAuth, token),
+    'Access-Control-Request-Method': 'GET' || 'POST',
+    // Authorization: requestToken(isAuth, token),
+    Origin: 'http://localhost:3001/'
   };
 
   try {
