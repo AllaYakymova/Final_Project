@@ -7,11 +7,14 @@ import EnteringForm from '../components/EnteringForm/EnteringForm'
 import QuickOrderForm from '../components/QuickOrderForm/QuickOrderForm'
 import Account from '../components/Account/Account'
 import PaymentForm from '../components/PaymentForm/PaymentForm'
+import Slider from '../components/Slider/Slider'
 
 const AppRoutes = () => {
   return (
     <Switch>
-      <Redirect exact from="/" to="/categories" />
+      <Route exact path="/slider">
+        <Slider />
+      </Route>
       <Route exact path="/categories">
         <CategoryPage />
       </Route>
@@ -27,22 +30,23 @@ const AppRoutes = () => {
       <Route exact path="/payment">
         <PaymentForm />
       </Route>
-      <Route path="/account">
+      <Route exact path="/account">
         <Account />
-      </Route>
-      <Route path="/account/profile">
         <ProfileForm />
       </Route>
       <Route exact path="/account/wishlist">
+        <Account />
         <h1>wishlist</h1>
       </Route>
       <Route exact path="/account/history">
+        <Account />
         <h1>history</h1>
       </Route>
       <Route exact path="/account/adress">
+        <Account />
         <h1>adress</h1>
       </Route>
-  </Switch>
+    </Switch>
   )
 }
 export default AppRoutes

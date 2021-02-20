@@ -1,19 +1,16 @@
-import { applyMiddleware, createStore, compose } from 'redux'
+import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './reducers'
 import createSagaMiddleware from 'redux-saga'
-import { watchFetchProducts } from './sagas/fetchProductesSaga/undex'
+import rootSaga from './sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware()
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : (f) => f
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [sagaMiddleware],
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-const store = createStore(
-  rootReducer,
-  compose(applyMiddleware(sagaMiddleware), devTools)
-)
+export default store;
 
-sagaMiddleware.run(watchFetchProducts)
-
-export default store
+sagaMiddleware.run(rootSaga);

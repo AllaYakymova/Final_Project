@@ -1,7 +1,8 @@
-import React, { useState, Fragment } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import Button from '../details/Button/Button'
-import { parsePhoneNumberFromString } from 'libphonenumber-js'
+import Cleave from 'cleave.js/react'
+import CleavePhone from 'cleave.js/dist/addons/cleave-phone.i18n'
 
 const QuickOrderForm = () => {
   const { handleSubmit, errors, register } = useForm()
@@ -34,16 +35,16 @@ const QuickOrderForm = () => {
       )}
       <label className="profile-form__label quick-order-form__label">
         MOBILE PHONE
-        <input
+        <Cleave
+          options={{
+            phone: true,
+            phoneRegionCode: 'UA',
+          }}
           name="phone"
           className="profile-form__input"
-          ref={register({
+          htmlRef={register({
             required: 'Your phone is required',
-            minLength: { value: 5, message: 'Please enter a correct phone' },
-            pattern: {
-              value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
-              message: 'Please enter a correct phone',
-            },
+            minLength: { value: 12, message: 'Please enter a correct phone' },
           })}
           type="tel"
           placeholder="+ 38"

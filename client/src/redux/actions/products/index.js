@@ -1,11 +1,11 @@
-import {
-  PRODUCTS_REQUEST_ERROR,
-  PRODUCTS_REQUEST_IN_PROCESS,
-  PRODUCTS_REQUEST_SUCCESS,
-  FETCH_PRODUCTS
-} from '../../constants/constants'
+import { createAction } from '@reduxjs/toolkit';
+import API from '../../constants/constants';
+import { actionCreator } from '../actionCreator';
 
-export const getProductsInProcess = () => ({ type: PRODUCTS_REQUEST_IN_PROCESS })
-export const getProductsSuccess = products => ({ type: PRODUCTS_REQUEST_SUCCESS, payload: [...products] })
-export const getProductsError = error => ({ type: PRODUCTS_REQUEST_ERROR, payload: error })
-export const fetchedProducts = () => ({ type: FETCH_PRODUCTS })
+const actionsWithProducts = {
+  fetchFilteredProducts: actionCreator(API.PRODUCTS.ACTIONS.FETCH_FILTERED_PRODUCTS),
+  setProductsPerPage: createAction(API.PRODUCTS.ACTIONS.PRODUCTS_PER_PAGE),
+  setCurrentPage: createAction(API.PRODUCTS.ACTIONS.CURRENT_PAGE),
+};
+
+export default actionsWithProducts;
