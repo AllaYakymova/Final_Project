@@ -9,8 +9,7 @@ export const apiRequestAction = ({ baseUrl, query, data, method, isAuth, actionT
       data: data,
       config: {
         method: method || 'GET',
-        isEditable: isAuth,
-        token: process.env.REACT_APP_ACCESS_TOKEN,
+        isAuth: isAuth,
       },
     },
     dispatchAction: actionType,
