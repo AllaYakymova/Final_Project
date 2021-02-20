@@ -7,11 +7,15 @@ import EnteringForm from '../components/EnteringForm/EnteringForm'
 import QuickOrderForm from '../components/QuickOrderForm/QuickOrderForm'
 import Account from '../components/Account/Account'
 import PaymentForm from '../components/PaymentForm/PaymentForm'
+import Slider from '../components/Slider/Slider'
 
 const AppRoutes = () => {
   return (
     <Switch>
-      <Redirect exact from="/" to="/categories" />
+      {/* <Redirect exact from="/" to="/categories" /> */}
+      <Route exact path='/slider'>
+        <Slider/>
+      </Route>
       <Route exact path="/categories">
         <CategoryPage />
       </Route>

@@ -1,0 +1,251 @@
+.MuiPaper-elevation1{
+  box-shadow: none !important;
+}
+
+.Carousel-indicators-2{
+  position: absolute;
+  bottom: 18px;
+  right: 15px;
+  width: fit-content !important;
+
+  @media screen and (min-width: 768px) {
+    left: 60px;
+    bottom: 50px;
+  }
+}
+
+.Carousel-indicator-3{
+  cursor: pointer;
+  font-size: 10px !important;
+  transition: 200ms;
+  color: rgba(0, 0, 0, 0) !important;
+  margin-right: 15px;
+  border: 2px solid #494949;
+  border-radius: 50%;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 12px !important;
+  }
+}
+
+.Carousel-active-4{
+  background-color: #494949;
+}
+
+.slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image{
+    width: 100vw;
+    max-height: 800px;
+    object-fit: cover;
+  }
+
+  &__wrapper-new-collection{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100px;
+    position: absolute;
+    top: 12%;
+    right: 4%;
+
+    @media screen and (min-width: 768px){
+      top: 30%;
+      right: 1.5%;
+    }
+    
+    @media screen and (min-width: 1280px){
+      height: 120px;
+      top: 25%;
+      right: 6%;
+    }
+  }
+
+  &__new-collection{
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: white;
+    margin: 0;
+
+    @media screen and (min-width: 1280px){
+      font-size: 48px;
+    }
+  }
+
+  &__wrapper-sale{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+
+    @media screen and (min-width: 768px){
+      left: auto;
+      top: 5%;
+      right: 10%;
+    }
+
+    @media screen and (min-width: 1024px){
+      bottom: 12%;
+      right: 10%;
+      top: 0;
+    }
+  }
+
+  &__sale{
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0 auto;
+    color: #FFFEFE;
+    text-shadow: 0px 4px 5px #000000;
+
+    @media screen and (min-width: 768px){
+      font-size: 50px;
+      line-height: 50px;
+      text-shadow: none;
+      color: #E01515;
+    }
+
+    @media screen and (min-width: 1024px){
+      font-size: 54px;
+    }
+ }
+
+ &__wrapper-enjoy{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  bottom: 0;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px){
+    top: 50px;
+  }
+ }
+
+ &__enjoy{
+   width: 170px;
+   font-family: 'Josefin Sans', sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 36px;
+   line-height: 36px;
+   margin: 0;
+   text-transform: uppercase;
+   color: #E01515;
+
+  @media screen and (min-width: 768px){
+    width: fit-content;
+    margin: 0 0 50px;
+    font-size: 50px;
+  }
+
+  @media screen  and (min-width: 1024px){
+    font-size: 64px;
+  }
+
+ }
+
+ &__link{
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #C4C4C4;
+    text-transform: uppercase;
+    width: fit-content;
+
+    @media screen and (min-width: 768px){
+      font-size: 28px;
+      font-family: 'Open Sans', sans-serif;
+      color: white;
+    }
+    @media screen and (min-width: 1280px){
+      font-size: 32px;
+    }
+
+   &_sale{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 25px 0 0 35px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: #0B0A0A;
+
+    @media screen and (min-width: 768px){
+      font-family: 'Open Sans', sans-serif;
+      font-weight: normal;
+      font-size: 36px;
+      color: #3F3D3D;
+      margin-left: auto;
+    }
+    
+   }
+
+   &_enjoy{
+     display: none;
+     color: #3F3D3D;
+
+    @media screen and (min-width: 768px){
+      display: inline-block;
+    }
+   }
+
+    &__hover{
+      transition: all 0.2s ease-in-out;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        margin: 5px 0 0;
+        transition: all 0.2s ease-in-out;
+        transition-duration: 0.5s;
+        opacity: 0;
+        background-color: white;
+      }
+      &_sale:after{
+        background-color: #0B0A0A;
+
+        @media screen and (min-width: 768px){
+          background-color: #3F3D3D;;
+        }
+      }
+
+      &_enjoy:after{
+        background-color: #3F3D3D;;
+      }
+
+      &:hover {
+        cursor: pointer;
+          &:after {
+            width: 100%;
+            opacity: 1;
+        }
+      }
+    }
+  } 
+}
+
