@@ -1,22 +1,16 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { productsSlice } from './ProductsSlice'
-import { paginationSlice } from './paginationSlice'
-import { cartSlice } from './cartSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import { rootReducer } from './reducers'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas/rootSaga';
 
-const middleware = getDefaultMiddleware({
-  immutableCheck: false,
-  serializableCheck: false,
-  thunk: true,
-});
+const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore({
-  reducer: {
-    products: productsSlice.reducer,
-    paginate: paginationSlice.reducer,
-    cart: cartSlice.reducer
-  },
-  middleware,
-  devTools: process.env.NODE_ENV !== 'production'
-})
+  reducer: rootReducer,
+  middleware: [sagaMiddleware],
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-export default store
+export default store;
+
+sagaMiddleware.run(rootSaga);
