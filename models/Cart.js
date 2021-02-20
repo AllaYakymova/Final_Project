@@ -12,11 +12,13 @@ const CartSchema = new Schema(
       {
         product: {
           type: Schema.Types.ObjectId,
-          ref: "products"
+          ref: "products",
+            size: Schema.Types.String
         },
         cartQuantity: {
           type: Number
         }
+
       }
     ],
     date: {

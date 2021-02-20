@@ -92,8 +92,11 @@ exports.deleteSlide = (req, res, next) => {
 };
 
 exports.getSlides = (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+
+
   Slider.find()
     .populate("product")
     .populate("category")
