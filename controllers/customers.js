@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const keys = require("../config/keys");
 const getConfigs = require("../config/getConfigs");
-const passport = require("passport");
+// const passport = require("passport");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(10000000, 99999999);
 
@@ -22,6 +22,7 @@ exports.createCustomer = (req, res, next) => {
   const initialQuery = _.cloneDeep(req.body);
   initialQuery.customerNo = rand();
 
+  req.mode("cors");
   // Check Validation
   const { errors, isValid } = validateRegistrationForm(req.body);
 
@@ -30,9 +31,9 @@ exports.createCustomer = (req, res, next) => {
   }
 
   Customer.findOne({
-    $or: [{ email: req.body.email }, { login: req.body.login }]
+    $or: [{ email: req.body.email }, { login: req.body.login }],
   })
-    .then(customer => {
+    .then((customer) => {
       if (customer) {
         if (customer.email === req.body.email) {
           return res
@@ -63,18 +64,18 @@ exports.createCustomer = (req, res, next) => {
           newCustomer.password = hash;
           newCustomer
             .save()
-            .then(customer => res.json(customer))
-            .catch(err =>
+            .then((customer) => res.json(customer))
+            .catch((err) =>
               res.status(400).json({
-                message: `Error happened on server: "${err}" `
+                message: `Error happened on server: "${err}" `,
               })
             );
         });
       });
     })
-    .catch(err =>
+    .catch((err) =>
       res.status(400).json({
-        message: `Error happened on server: "${err}" `
+        message: `Error happened on server: "${err}" `,
       })
     );
 };
@@ -94,9 +95,9 @@ exports.loginCustomer = async (req, res, next) => {
 
   // Find customer by email
   Customer.findOne({
-    $or: [{ email: loginOrEmail }, { login: loginOrEmail }]
+    $or: [{ email: loginOrEmail }, { login: loginOrEmail }],
   })
-    .then(customer => {
+    .then((customer) => {
       // Check for customer
       if (!customer) {
         errors.loginOrEmail = "Customer not found";
@@ -104,14 +105,14 @@ exports.loginCustomer = async (req, res, next) => {
       }
 
       // Check Password
-      bcrypt.compare(password, customer.password).then(isMatch => {
+      bcrypt.compare(password, customer.password).then((isMatch) => {
         if (isMatch) {
           // Customer Matched
           const payload = {
             id: customer.id,
             firstName: customer.firstName,
             lastName: customer.lastName,
-            isAdmin: customer.isAdmin
+            isAdmin: customer.isAdmin,
           }; // Create JWT Payload
 
           // Sign Token
@@ -122,7 +123,7 @@ exports.loginCustomer = async (req, res, next) => {
             (err, token) => {
               res.json({
                 success: true,
-                token: "Bearer " + token
+                token: "Bearer " + token,
               });
             }
           );
@@ -132,15 +133,17 @@ exports.loginCustomer = async (req, res, next) => {
         }
       });
     })
-    .catch(err =>
+    .catch((err) =>
       res.status(400).json({
-        message: `Error happened on server: "${err}" `
+        message: `Error happened on server: "${err}" `,
       })
     );
 };
 
 // Controller for getting current customer
 exports.getCustomer = (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
   res.json(req.user);
 };
 
@@ -157,7 +160,7 @@ exports.editCustomerInfo = (req, res) => {
   }
 
   Customer.findOne({ _id: req.user.id })
-    .then(customer => {
+    .then((customer) => {
       if (!customer) {
         errors.id = "Customer not found";
         return res.status(404).json(errors);
@@ -172,7 +175,7 @@ exports.editCustomerInfo = (req, res) => {
         newEmail = req.body.email;
 
         if (currentEmail !== newEmail) {
-          Customer.findOne({ email: newEmail }).then(customer => {
+          Customer.findOne({ email: newEmail }).then((customer) => {
             if (customer) {
               errors.email = `Email ${newEmail} is already exists`;
               res.status(400).json(errors);
@@ -186,7 +189,7 @@ exports.editCustomerInfo = (req, res) => {
         newLogin = req.body.login;
 
         if (currentLogin !== newLogin) {
-          Customer.findOne({ login: newLogin }).then(customer => {
+          Customer.findOne({ login: newLogin }).then((customer) => {
             if (customer) {
               errors.login = `Login ${newLogin} is already exists`;
               res.status(400).json(errors);
@@ -204,16 +207,16 @@ exports.editCustomerInfo = (req, res) => {
         { $set: updatedCustomer },
         { new: true }
       )
-        .then(customer => res.json(customer))
-        .catch(err =>
+        .then((customer) => res.json(customer))
+        .catch((err) =>
           res.status(400).json({
-            message: `Error happened on server: "${err}" `
+            message: `Error happened on server: "${err}" `,
           })
         );
     })
-    .catch(err =>
+    .catch((err) =>
       res.status(400).json({
-        message: `Error happened on server:"${err}" `
+        message: `Error happened on server:"${err}" `,
       })
     );
 };
@@ -231,7 +234,7 @@ exports.updatePassword = (req, res) => {
   Customer.findOne({ _id: req.user.id }, (err, customer) => {
     let oldPassword = req.body.password;
 
-    customer.comparePassword(oldPassword, function(err, isMatch) {
+    customer.comparePassword(oldPassword, function (err, isMatch) {
       if (!isMatch) {
         errors.password = "Password does not match";
         res.json(errors);
@@ -246,20 +249,20 @@ exports.updatePassword = (req, res) => {
               { _id: req.user.id },
               {
                 $set: {
-                  password: newPassword
-                }
+                  password: newPassword,
+                },
               },
               { new: true }
             )
-              .then(customer => {
+              .then((customer) => {
                 res.json({
                   message: "Password successfully changed",
-                  customer: customer
+                  customer: customer,
                 });
               })
-              .catch(err =>
+              .catch((err) =>
                 res.status(400).json({
-                  message: `Error happened on server: "${err}" `
+                  message: `Error happened on server: "${err}" `,
                 })
               );
           });

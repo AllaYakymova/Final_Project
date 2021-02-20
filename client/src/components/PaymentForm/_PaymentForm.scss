@@ -36,6 +36,23 @@
 
   &__payment-method-option{
     margin-right: 4.5rem;
+
+    &_other{
+      display: none;
+      font-family: 'Open Sans', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      padding: 10px 15px;
+      text-transform: uppercase;
+      background: darkgray;
+      color: #000000;
+      border: 1px solid blue;
+      border-radius: 3px;
+      @media screen and (min-width: 768px){
+        display: block;
+      } 
+    }
   }
 
   &__label{
@@ -53,7 +70,7 @@
     
     &_cvc{
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: space-between;
 
       @media screen and (min-width: 768px){
@@ -73,7 +90,9 @@
     margin: 2rem 0 0;
 
     &_expiry-date{
-      width: 10rem;
+      width: 5rem;
+      outline: none;
+      background-color: transparent;
     }
 
     &_cvv{
@@ -84,6 +103,12 @@
       @media screen and (min-width: 768px){
         width: 16rem;
       }
+    }
+
+    &_cardType{
+      width: 0;
+      height: 0;
+      opacity: 0;
     }
 
     &_cardHolder{
@@ -116,4 +141,57 @@
     }
   }
 
+  &__swal-popup{
+    width: 300px !important;
+    height: 200px !important;
+
+    @media screen and (min-width: 768px){
+    width: 550px !important;
+    height: 350px !important;
+    }
+  }
+
+  &__swal-title{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px !important;
+
+    @media screen and (min-width: 768px){
+      font-size: 24px !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  &__swal-text{
+
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 12px !important;
+    color: #545454 !important;
+    @media screen and (min-width: 768px){
+      font-size: 16px !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  &__swal-button{
+    width: 80px !important;
+    height: 35px !important;
+    background-color: rgb(18, 246, 75) !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 14px !important;
+
+
+    @media screen and (min-width: 768px){
+      width: 110px !important;
+      height: 40px !important;
+    }
+  }
+}
+
+.swal2-popup {
+  font-size: 1rem !important;
+
+  @media screen and (min-width: 768px){
+    font-size: 2rem !important;
+    
+  }
 }
