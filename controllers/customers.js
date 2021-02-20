@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const keys = require("../config/keys");
 const getConfigs = require("../config/getConfigs");
-const passport = require("passport");
+//const passport = require("passport");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(10000000, 99999999);
 
@@ -141,6 +141,8 @@ exports.loginCustomer = async (req, res, next) => {
 
 // Controller for getting current customer
 exports.getCustomer = (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
   res.json(req.user);
 };
 

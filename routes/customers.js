@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
+//const passport = require("passport");
 
 //Import controllers
 const {
@@ -26,7 +26,7 @@ router.post("/login", loginCustomer);
 // @access  Private
 router.get(
   "/customer",
-  passport.authenticate("jwt", { session: false }),
+ // passport.authenticate("jwt", { session: false }),
   getCustomer
 );
 
@@ -35,7 +35,7 @@ router.get(
 // @access  Private
 router.put(
   "/",
-  passport.authenticate("jwt", { session: false }),
+ // passport.authenticate("jwt", { session: false }),
   editCustomerInfo
 );
 
@@ -44,7 +44,7 @@ router.put(
 // @access  Private
 router.put(
   "/password",
-  passport.authenticate("jwt", { session: false }),
+//  passport.authenticate("jwt", { session: false }),
   updatePassword
 );
 
