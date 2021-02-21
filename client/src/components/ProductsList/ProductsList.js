@@ -1,37 +1,37 @@
-import React, { useCallback, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import ShortCard from '../ProductCards/ShortCard/ShortCard'
 import PropTypes from 'prop-types'
-import { getProducts, getProductsPerPage, getCurrentPage, getCurrentProducts, getFilteredProducts } from '../../redux/selectors/products/selectors'
+import { getCurrentPage, getFilteredProducts, getProductsPerPage } from '../../redux/selectors/products/selectors'
+import actionsWithProducts from '../../redux/actions/products'
 // import Pagination from '../Pagination/Pagination'
 
 const ProductsList = () => {
-  const products = useSelector(getProducts);
-  const prodsPerPage = useSelector(getProductsPerPage);
-  const current = useSelector(getCurrentPage);
-  // const currentProds = useSelector(getFilteredProducts('men'));
-  const dispatch = useDispatch();
+  const prodsPerPage = useSelector(getProductsPerPage)
+  const currentPage = useSelector(getCurrentPage)
+  const currentProds = useSelector(getFilteredProducts('men'))
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    // dispatch(actionsWithProducts.setCurrentProducts(currentProds));
-  }, [prodsPerPage, current, dispatch]);
+    dispatch(actionsWithProducts.setCurrentProducts(currentProds))
+  }, [currentProds, prodsPerPage, currentPage, dispatch])
 
-  const list = products.map(product => {
+  const list = currentProds.map(product => {
     return (
-        <li key={product._id} className="card card_short">
-          <ShortCard product={product} />
-        </li>)
-  });
+      <li key={product._id} className="card card_short">
+        <ShortCard product={product}/>
+      </li>)
+  })
 
   // const pagination = (status === 'succeeded' && <Pagination filteredProd={filteredProd}/>);
   // console.log(pagination)
 
   return (
-      <div>
-        <ul className="cards-wrap">
-          {list}
-        </ul>
-      </div>
+    <div>
+      <ul className="cards-wrap">
+        {list}
+      </ul>
+    </div>
   )
 }
 

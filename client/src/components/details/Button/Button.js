@@ -20,6 +20,7 @@ const Button = ({
   fz14,
   mrt55,
   mrt85,
+  mrb20,
   mrrauto,
   counter = false,
   paginateDecrem = false,
@@ -45,6 +46,7 @@ const Button = ({
     fz_14: fz14,
     mr_t_55: mrt55,
     mr_t_85: mrt85,
+    mr_b_20: mrb20,
     mr_r_auto: mrrauto,
 
     // еще добавить классы для ховера и онклика

@@ -21,7 +21,7 @@ const ProductPage = ({ match = {} }) => {
           <Button text="Go to cart" isBlack size26346 mrrauto/>
         </Link>
         <Link to='/categories'>
-          <Button text="Go to catalog" isBlack size26346 mrrauto/>
+          <Button text="Go to catalog" isLight size26346 mrrauto/>
         </Link>
         <DetailCard product={productTarget}/>
       </div>

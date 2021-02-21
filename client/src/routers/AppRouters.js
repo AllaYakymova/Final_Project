@@ -23,7 +23,7 @@ const AppRoutes = () => {
       <Route exact path="/enter">
         <EnteringForm />
       </Route>
-      <Route exact path="/quickorder">
+      <Route exact path="/quick_order">
         <QuickOrderForm />
       </Route>
       <Route exact path="/payment">
@@ -35,8 +35,8 @@ const AppRoutes = () => {
       <Route path="/account/profile">
         <ProfileForm />
       </Route>
-      <Route exact path="/account/wishlist">
-        <h1>wishlist</h1>
+      <Route exact path="/account/wish-list">
+        <h1>wish list</h1>
       </Route>
       <Route exact path="/account/history">
         <h1>history</h1>

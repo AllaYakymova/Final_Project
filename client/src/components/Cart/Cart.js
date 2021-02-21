@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCartSum, getLocalCart } from '../../redux/selectors/cart'
 import client from '../../api/client'
 import actionsWithCart from '../../redux/actions/cart'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const localCart = useSelector(getLocalCart)
@@ -73,6 +74,17 @@ const Cart = () => {
     }
   }, [localCart, cartProds, dispatch])
 
+  const oderButtons = (
+    <>
+      <Link to="/payment">
+        <Button text='CHECKOUT' isBlack size26357 fz18 mrb20/>
+      </Link>
+      <Link to="/quick_order">
+        <Button text='QUICK ORDER' isBlack size26357 fz18 />
+      </Link>
+    </>
+  )
+
   const cartTotalBlockMobile = (
     <span className='cart__total-block-mobile'><h2 className="cart__text cart__text-title">SHOPPING BAG TOTAL</h2><div
       className="cart__total"><form noValidate autoComplete="off" className='mb3'><p className="cart__text_12 mb1">ADD A DISCOUNT CODE</p><TextField
@@ -82,8 +94,9 @@ const Cart = () => {
       className="cart__text cart__text-subtitle">DELIVERY</p><p
       className="cart__text cart__text-subtitle">free</p></div><div className='cart__info-item'><p
       className="cart__text cart__text-title">TOTAL</p><p
-      className="cart__text cart__text-title_18">{cartSum} &#36;</p></div><Button text='CHECKOUT' isBlack size26357 fz18
-                                                                                  onClick={() => {}}/></div></span>)
+      className="cart__text cart__text-title_18">{cartSum} &#36;</p></div>
+      {oderButtons}
+    </div></span>)
 
   const cartTotalBlockDesktop = (
     <div className="cart__total cart__total-block-desktop"><h2 className="cart__text cart__text-title">SHOPPING BAG
@@ -96,7 +109,8 @@ const Cart = () => {
         className="cart__text cart__text-subtitle">free</p></div>
       <div className='cart__info-item'><p className="cart__text cart__text-title">TOTAL</p><p
         className="cart__text cart__text-title_18">{cartSum} &#36;</p></div>
-      <Button text='CHECKOUT' isBlack size26357 fz18 onClick={() => {}}/></div>)
+      {oderButtons}
+    </div>)
 
   return (
     <div className="cart-wrap">

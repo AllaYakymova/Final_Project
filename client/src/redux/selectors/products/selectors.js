@@ -26,24 +26,19 @@ export const getProductsPerPage = createSelector(
 // filter products by category
 export const getFilteredProducts = (category) => createSelector(
   productsState,
-  products => products.productsList,
-  products => products.currentPage,
-  products => products.productsPerPage,
-  (productsList, currentPage, productsPerPage) => {
-    console.log(productsList, currentPage, productsPerPage);
-    // const filteredProd = productsList.filter(item => item.categories === category);
-    // const itemNo = filteredProd.map(item => item.itemNo);
-    // const uniqueSet = new Set(itemNo)
-    // const uniqueArr = [...uniqueSet];
-    // let uniqueList = [];
-    // uniqueArr.forEach((item) => {
-    //   if (uniqueList.indexOf(item) === -1) {
-    //     const res = productsList.find(prod => prod.itemNo === item)
-    //     uniqueList = [...uniqueList, res]
-    //   }
-    // })
-    // const indexOfLastProduct = currentPage * productsPerPage;
-    // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    // console.log(uniqueList.slice(indexOfFirstProduct, indexOfLastProduct));
-    // return uniqueList.slice(indexOfFirstProduct, indexOfLastProduct);
+  (products) => {
+    const filteredProd = products.productsList.filter(item => item.categories === category);
+    const itemNo = filteredProd.map(item => item.itemNo);
+    const uniqueSet = new Set(itemNo)
+    const uniqueArr = [...uniqueSet];
+    let uniqueList = [];
+    uniqueArr.forEach((item) => {
+      if (uniqueList.indexOf(item) === -1) {
+        const res = products.productsList.find(prod => prod.itemNo === item)
+        uniqueList = [...uniqueList, res]
+      }
+    })
+    const indexOfLastProduct = products.currentPage * products.productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - products.productsPerPage;
+    return uniqueList.slice(indexOfFirstProduct, indexOfLastProduct);
   });
