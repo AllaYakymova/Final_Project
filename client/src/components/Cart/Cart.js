@@ -43,7 +43,7 @@ const Cart = () => {
       sum += sumArr[i]
     }
     dispatch(actionsWithCart.setCartSum(Math.floor(sum * 100) / 100))
-  }, [localCart])
+  }, [localCart, dispatch])
 
   const cartProductDeleteHandler = useCallback((id, total) => {
     const newCart = localCart.filter(item => item.product !== id)
@@ -56,7 +56,7 @@ const Cart = () => {
   }, [localCart, cartProds, dispatch])
 
   const cartList = useCallback(() => {
-    let sum = 0
+    let sum = 0;
     if (localCart.length) {
       return cartProds.map(product => {
         const prod = localCart.filter(item => item.product === product._id)
@@ -69,8 +69,6 @@ const Cart = () => {
                       cartProductDeleteHandler={(id, total) => { cartProductDeleteHandler(id, total) }}/>
           </li>)
       })
-    } else {
-      return (<h2 style={{ color: 'red' }}>The bag is empty</h2>)
     }
   }, [localCart, cartProds, dispatch])
 
@@ -80,7 +78,7 @@ const Cart = () => {
         <Button text='CHECKOUT' isBlack size26357 fz18 mrb20/>
       </Link>
       <Link to="/quick_order">
-        <Button text='QUICK ORDER' isBlack size26357 fz18 />
+        <Button text='QUICK ORDER' isBlack size26357 fz18/>
       </Link>
     </>
   )
@@ -101,7 +99,7 @@ const Cart = () => {
   const cartTotalBlockDesktop = (
     <div className="cart__total cart__total-block-desktop"><h2 className="cart__text cart__text-title">SHOPPING BAG
       TOTAL</h2>
-      <form noValidate autoComplete="off" className='mb3 cart__total-line'><p className="cart__text_12 mb1 ">ADD A
+      <form noValidate autoComplete="off" className='mb3 cart__total-line'><p className="cart__text_12 mb1">ADD A
         DISCOUNT CODE</p><TextField id="standard-basic" label=""/></form>
       <div className='cart__info-item'><p className="cart__text cart__text-subtitle">ORDER VALUE:</p><p
         className="cart__text cart__text-subtitle ">{cartSum} &#36;</p></div>
@@ -112,13 +110,17 @@ const Cart = () => {
       {oderButtons}
     </div>)
 
+  const emptyCart = !localCart.length && <div className="cart__item cart__item_empty">
+    <h2 className="cart__text-title_18">The bag is empty</h2></div>
+
+  const cartItems = localCart.length > 0 && <ul className="cart__items">{cartList()}</ul>
+
   return (
     <div className="cart-wrap">
       <h3 className="cart__text-title-phone">Shopping bag</h3>
       <div className="cart">
-        <ul className="cart__items">
-          {cartList()}
-        </ul>
+        {emptyCart}
+        {cartItems}
         {cartTotalBlockMobile}
         {cartTotalBlockDesktop}
       </div>
