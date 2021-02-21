@@ -27,6 +27,7 @@ const Cart = () => {
 
   useEffect(() => {
     GetCartProducts(localCart)
+    console.log(localCart.length, localCart)
   }, [localCart.length])
 
   const cartList = (cartProds) => {
@@ -41,7 +42,7 @@ const Cart = () => {
           <CartCard product={product} number={amount} prodSum={Math.floor(prodSum * 100) / 100}/>
         </li>)
     })
-    dispatch(actionsWithCart.setCartSum(sum))
+    dispatch(actionsWithCart.setCartSum(Math.floor(sum * 100) / 100))
     return res
   }
 

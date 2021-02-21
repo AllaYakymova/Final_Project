@@ -61,6 +61,7 @@ const API = {
       CREATE_LOCAL_CART: 'cart/createLocalCart',
       SET_CART_SUM: 'cart/setCartSum',
       ADD_PRODUCT: 'cart/addProductToCart',
+      INCREASE_PRODUCT_AMOUNT: 'cart/increaseProductInCart',
       REDUCE_PRODUCT_AMOUNT: 'cart/reduceProductInCart',
       REMOVE_PRODUCT: 'cart/removeProductFromCart',
       CLEAR_CART: 'cart/clearCart'

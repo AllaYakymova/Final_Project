@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import Button from '../details/Button/Button'
@@ -6,13 +6,12 @@ import FavIcon from '../details/icons/FavoriteIcon'
 import CartCounter from '../details/CartCounter/CartCounter'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/selectors/products/selectors'
-import { getLocalCart } from '../../redux/selectors/cart/';
+// import { getLocalCart } from '../../redux/selectors/cart/';
 import actionsWithCart from '../../redux/actions/cart'
-import { act } from '@testing-library/react'
 
-const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, ...props }) => {
+const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, incrementHandler, decrementHandler, ...props }) => {
   const products = useSelector(getProducts);
-  const cartLocal = useSelector(getLocalCart);
+  // const cartLocal = useSelector(getLocalCart);
   const dispatch = useDispatch();
   const [size, setSize] = useState('');
   const [id, setId] = useState('');
@@ -137,37 +136,12 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
   const titleBlock = <div className='detail__info-wrap detail__info-wrap_mobile'>{name}{price}{code}</div>
   const mobilePhotoBlock = (<div className={cardInfoWrap}>{productImage}{titleBlock}</div>)
 
-  // for Cart
-  const decremented = useCallback(() => {
-    const prodArr = cartLocal.filter(item => item.product === product._id);
-    const prod = { ...prodArr[0] };
-    let newCart;
-    if (prod.cartQuantity > 0) {
-      prod.cartQuantity = prod.cartQuantity - 1;
-      console.log(prod.cartQuantity)
-      newCart = cartLocal.map(item => item.product === product._id ? prod : item)
-    } else if (prod.cartQuantity === 0) {
-      newCart = cartLocal;
-    }
-    dispatch(actionsWithCart.reduceProductInCart(newCart));
-  }, [cartLocal, product, dispatch]);
-
-  const incremented = useCallback(() => {
-    const prodArr = cartLocal.filter(item => item.product === product._id)
-    const prod = {...prodArr[0]};
-    console.log(prod)
-    prod.cartQuantity = prod.cartQuantity + 1;
-    const newCart = cartLocal.map(item => item.product === product._id ? prod : item)
-    console.log(prod.cartQuantity, newCart)
-    dispatch(actionsWithCart.addProductToCart(newCart));
-  }, [cartLocal, product, dispatch]);
-
   // amount of the product in cart
-  const cartProductAmount = useCallback(() => {
-    const prod = cartLocal.filter(item => item.product === product._id)
-    console.log(prod.cartQuantity)
-    return prod.cartQuantity;
-  }, [cartLocal]);
+  // const cartProductAmount = useCallback(() => {
+  //   const prod = cartLocal.filter(item => item.product === product._id)
+  //   console.log(prod.cartQuantity)
+  //   return prod.cartQuantity;
+  // }, [cartLocal]);
 
   // const [count, setCount] = useState(cartProductAmount());
   // const decremented = useCallback(() => {
@@ -190,7 +164,7 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
   //   dispatch(actionsWithCart.addProductToCart({item: newCart._id, sum: product.currentPrice}));
   // }, [setCount, count, product, dispatch]);
 
-  const counter = (isCart && <CartCounter number={cartProductAmount()} {...props} incrementHandler={incremented} decrementHandler={decremented}/>)
+  const counter = (isCart && <CartCounter number={number} incrementHandler={incrementHandler} decrementHandler={decrementHandler} {...props} />)
 
   const cartInfoArr = [
     {

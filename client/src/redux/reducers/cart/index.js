@@ -30,6 +30,9 @@ const cartReducer = createReducer(initialState, {
   [actionsWithCart.setCartSum]: (state, action) => {
     state.cartSum = action.payload;
   },
+  [actionsWithCart.increaseProductInCart]: (state, action) => {
+    state.localCart = action.payload;
+  },
   [actionsWithCart.reduceProductInCart]: (state, action) => {
     state.localCart = action.payload;
   },
