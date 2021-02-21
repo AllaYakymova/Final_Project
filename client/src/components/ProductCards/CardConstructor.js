@@ -6,15 +6,13 @@ import FavIcon from '../details/icons/FavoriteIcon'
 import CartCounter from '../details/CartCounter/CartCounter'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../redux/selectors/products/selectors'
-// import { getLocalCart } from '../../redux/selectors/cart/';
 import actionsWithCart from '../../redux/actions/cart'
 
 const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, image, buyBtn, favorite, total, incrementHandler, decrementHandler, ...props }) => {
-  const products = useSelector(getProducts);
-  // const cartLocal = useSelector(getLocalCart);
-  const dispatch = useDispatch();
-  const [size, setSize] = useState('');
-  const [id, setId] = useState('');
+  const products = useSelector(getProducts)
+  const dispatch = useDispatch()
+  const [size, setSize] = useState('')
+  const [id, setId] = useState('')
 
   const cardTitle = classNames('card__title', {
     card__title_short: isShort,
@@ -53,7 +51,7 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
   // General used constants
   const name = <p className={cardTitle}>{product.name}</p>
   const price = <span className={cardPrice}>{product.currentPrice} &#36;</span>
-  const code = <p className={cardSubText}>REF: {product.itemNo}</p>
+  const code = <p className={cardSubText}>REF: {product._id}</p> // REF: {product.itemNo}
   const productImage = (image && <img className={cardImage} src={product.imageUrls[0]} alt={product.name}/>)
 
   // For detailed product card
@@ -85,20 +83,17 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
     <p className='button_iterator_text'>{text}</p></>)
 
   const colorIterator = () => {
-    const sameProds = findSameProds(product.name);
-    const colors = sameProds.map(item => item.color);
+    const sameProds = findSameProds(product.name)
+    const colors = sameProds.map(item => item.color)
     const uniqueSet = new Set(colors)
-    const uniqueColors = [...uniqueSet];
-    let arr = [];
+    const uniqueColors = [...uniqueSet]
+    let arr = []
     uniqueColors.forEach(color => {
       const res = sameProds.find(item => item.color === color)
       arr = [...arr, res]
     })
     const iterItems = arr.map(item => {
       const route = `/categories/${item._id}`
-      // const col = item.color.toString();
-      // const col1 = item.color.charAt(0).toLowerCase() + item.color.slice(1);
-      // console.log(col)
       return (
         <li key={item._id + item.name} className='card__iterator_item'>
           <Link to={route}>
@@ -114,21 +109,21 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
   }
 
   const addToCartHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const item = {
       itemNo: product.itemNo,
+      currentPrice: product.currentPrice,
       product: id,
       size: size,
-      cartQuantity: 1
+      cartQuantity: 1,
     }
     if (!size) {
       alert('Choose the size of product')
     }
     if (product.itemNo && id && size) {
-      dispatch(actionsWithCart.addProductToCart(item));
-      // dispatch(actionsWithCart.createCart.request(item1))
+      dispatch(actionsWithCart.addProductToCart(item))
     }
-  };
+  }
 
   const description = <p className={cardText}>{product.oneMoreCustomParam.description}</p>
   const favButton = (favorite && <Button text={<FavIcon/>} isBlack size5557/>)
@@ -136,35 +131,8 @@ const CardConstructor = ({ product, number, prodSum, isShort, isDetail, isCart, 
   const titleBlock = <div className='detail__info-wrap detail__info-wrap_mobile'>{name}{price}{code}</div>
   const mobilePhotoBlock = (<div className={cardInfoWrap}>{productImage}{titleBlock}</div>)
 
-  // amount of the product in cart
-  // const cartProductAmount = useCallback(() => {
-  //   const prod = cartLocal.filter(item => item.product === product._id)
-  //   console.log(prod.cartQuantity)
-  //   return prod.cartQuantity;
-  // }, [cartLocal]);
-
-  // const [count, setCount] = useState(cartProductAmount());
-  // const decremented = useCallback(() => {
-  //   setCount(count > 0 ? count - 1 : 0);
-  //   const prod = cartLocal.filter(item => item.product === product._id)
-  //   prod.cartQuantity = prod.cartQuantity - 1;
-  //   console.log(prod.cartQuantity) //
-  //   const newCart = cartLocal.map(item => item.product === product._id ? prod : item)
-  //   console.log(newCart)
-  //   const sum = count === 0 ? 0 : product.currentPrice;
-  //   dispatch(actionsWithCart.reduceProductInCart({cart: newCart, sum: sum }));
-  // }, [setCount, count, product, cartLocal, dispatch]);
-  //
-  // const incremented = useCallback(() => {
-  //   setCount(count + 1);
-  //   const prod = cartLocal.filter(item => item.product === product._id)
-  //   prod.cartQuantity = prod.cartQuantity + 1;
-  //   const newCart = cartLocal.map(item => item.product === product._id ? prod : item)
-  //   console.log(newCart)
-  //   dispatch(actionsWithCart.addProductToCart({item: newCart._id, sum: product.currentPrice}));
-  // }, [setCount, count, product, dispatch]);
-
-  const counter = (isCart && <CartCounter number={number} incrementHandler={incrementHandler} decrementHandler={decrementHandler} {...props} />)
+  const counter = (isCart &&
+    <CartCounter number={number} incrementHandler={incrementHandler} decrementHandler={decrementHandler} {...props} />)
 
   const cartInfoArr = [
     {

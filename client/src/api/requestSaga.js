@@ -18,7 +18,7 @@ export const apiRequestAction = ({ baseUrl, query, data, method, isAuth, actionT
 
 export function * apiRequestHandler (requestAction) {
   const { request, dispatchAction } = requestAction;
-  console.log(requestAction);
+
   try {
     yield put(dispatchAction.start());
     const response = yield call(() => client({

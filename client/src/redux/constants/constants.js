@@ -64,6 +64,7 @@ const API = {
       INCREASE_PRODUCT_AMOUNT: 'cart/increaseProductInCart',
       REDUCE_PRODUCT_AMOUNT: 'cart/reduceProductInCart',
       REMOVE_PRODUCT: 'cart/removeProductFromCart',
+      ORDER_PRODUCTS: 'cart/createOrderProductsList',
       CLEAR_CART: 'cart/clearCart'
     },
   },

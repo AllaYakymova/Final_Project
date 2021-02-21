@@ -4,6 +4,7 @@ import actionsWithCart from '../../actions/cart/'
 const initialState = {
   cart: [],
   localCart: [],
+  orderProds: [],
   cartSum: 0,
   status: 'idle',
   error: null,

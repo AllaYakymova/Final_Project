@@ -11,5 +11,6 @@ const actionsWithCart = {
   reduceProductInCart: createAction(API.CART.ACTIONS.REDUCE_PRODUCT_AMOUNT),
   removeProductFromCart: createAction(API.CART.ACTIONS.REMOVE_PRODUCT),
   setCartSum: createAction(API.CART.ACTIONS.SET_CART_SUM),
+  createOrderProductsList: createAction(API.CART.ACTIONS.ORDER_PRODUCTS)
 };
 export default actionsWithCart

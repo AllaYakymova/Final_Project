@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import CartCard from '../ProductCards/CartCard/CartCard'
 import { TextField } from '@material-ui/core'
 import Button from '../details/Button/Button'
@@ -10,56 +10,68 @@ import actionsWithCart from '../../redux/actions/cart'
 const Cart = () => {
   const localCart = useSelector(getLocalCart)
   const cartSum = useSelector(getCartSum)
+  const [cartAmount, setCartAmount] = useState(localCart.length)
   const [cartProds, setCartProds] = useState([])
   const dispatch = useDispatch()
 
-  const GetCartProducts = (cart) => {
+  const GetCartProducts = () => {
     let cartProducts = []
-    cart.forEach(async (prod) => {
-      const response = await client({
-        baseURL: `http://localhost:5000/api/products/${prod.itemNo}`,
-      })
-      const product = response.filter(i => i.size === prod.size)
-      cartProducts = [...product, ...cartProducts]
+    localCart.forEach(async (prod) => {
+      if (localCart.length >= cartAmount) {
+        const response = await client({
+          baseURL: `http://localhost:5000/api/products/${prod.itemNo}`,
+        })
+        const product = response.filter(i => i.size === prod.size)
+        cartProducts = [...product, ...cartProducts]
+      } else {
+        cartProducts = cartProds
+      }
+      setCartAmount(localCart.length)
       setCartProds(cartProducts)
     })
   }
 
   useEffect(() => {
     GetCartProducts(localCart)
-    console.log(localCart.length, localCart)
   }, [localCart.length])
 
-  const cartList = (cartProds) => {
+  useEffect(() => {
+    const sumArr = localCart.map(item => item.currentPrice * item.cartQuantity)
     let sum = 0
-    const res = cartProds.map(product => {
-      const prod = localCart.filter(item => item.product === product._id)
-      const amount = prod[0].cartQuantity
-      const prodSum = amount * product.currentPrice
-      sum = sum + prodSum
-      return (
-        <li key={product._id} className="cart__item">
-          <CartCard product={product} number={amount} prodSum={Math.floor(prodSum * 100) / 100}/>
-        </li>)
-    })
+    for (let i = 0; i < sumArr.length; i++) {
+      sum += sumArr[i]
+    }
     dispatch(actionsWithCart.setCartSum(Math.floor(sum * 100) / 100))
-    return res
-  }
+  }, [localCart])
 
-  // const createNewCart = (cart) => {
-  //   const xxx = cart.map(item => {
-  //     return {
-  //       product: item.product,
-  //       size: item.size,
-  //       cartQuantity: item.cartQuantity
-  //     }
-  //   })
-  //   const cartData = {
-  //     products: xxx
-  //   };
-  //   console.log(JSON.stringify(cartData))
-  //   dispatch(createCart(JSON.stringify(cartData)));
-  // }
+  const cartProductDeleteHandler = useCallback((id, total) => {
+    const newCart = localCart.filter(item => item.product !== id)
+    const newCartProds = cartProds.filter(item => item._id !== id)
+    setCartProds(newCartProds)
+    dispatch(actionsWithCart.removeProductFromCart({
+      cart: newCart,
+      sum: total,
+    }))
+  }, [localCart, cartProds, dispatch])
+
+  const cartList = useCallback(() => {
+    let sum = 0
+    if (localCart.length) {
+      return cartProds.map(product => {
+        const prod = localCart.filter(item => item.product === product._id)
+        const amount = prod[0].cartQuantity
+        const prodSum = amount * product.currentPrice
+        sum = sum + prodSum
+        return (
+          <li key={product._id} className="cart__item">
+            <CartCard product={product} number={amount} prodSum={Math.floor(prodSum * 100) / 100}
+                      cartProductDeleteHandler={(id, total) => { cartProductDeleteHandler(id, total) }}/>
+          </li>)
+      })
+    } else {
+      return (<h2 style={{ color: 'red' }}>The bag is empty</h2>)
+    }
+  }, [localCart, cartProds, dispatch])
 
   const cartTotalBlockMobile = (
     <span className='cart__total-block-mobile'><h2 className="cart__text cart__text-title">SHOPPING BAG TOTAL</h2><div
@@ -86,17 +98,12 @@ const Cart = () => {
         className="cart__text cart__text-title_18">{cartSum} &#36;</p></div>
       <Button text='CHECKOUT' isBlack size26357 fz18 onClick={() => {}}/></div>)
 
-  // const shopButton = (<span className='cart__shop-button'><Button text='KEEP SHOPPING' isBlack size26957 fz18
-  //                                                                 onClick={() => console.log('test-back')}/></span>)
-  //
-  // const paginatorLeft = <div><div className="paginator"/></div>
-
   return (
     <div className="cart-wrap">
       <h3 className="cart__text-title-phone">Shopping bag</h3>
       <div className="cart">
         <ul className="cart__items">
-          {cartList(cartProds)}
+          {cartList()}
         </ul>
         {cartTotalBlockMobile}
         {cartTotalBlockDesktop}
