@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import ProfileForm from '../ProfileForm/ProfileForm'
 
 const Account = () => {
   return (
@@ -8,13 +7,15 @@ const Account = () => {
       <h3 className="account__header">My account</h3>
       <div className="account__nav-bar">
         <NavLink
-          to="/account/profile"
+          exact
+          to="/account"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
         >
           My profile
         </NavLink>
         <NavLink
+          exact
           to="/account/wishlist"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
@@ -22,6 +23,7 @@ const Account = () => {
           My wishlist
         </NavLink>
         <NavLink
+          exact
           to="/account/history"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"
@@ -29,6 +31,7 @@ const Account = () => {
           Purchase history
         </NavLink>
         <NavLink
+          exact
           to="/account/adress"
           className="account__nav-bar__link"
           activeClassName="account__nav-bar__link_active"

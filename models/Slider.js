@@ -26,11 +26,17 @@ const SliderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "customers"
     },
+      wrapperClass: String,
+
+      titleClass: String,
+
+      linkClass: String,
     date: {
       type: Date,
       default: Date.now
     }
   },
+
   { strict: false }
 );
 

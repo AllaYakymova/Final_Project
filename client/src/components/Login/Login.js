@@ -1,11 +1,28 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Button from '../details/Button/Button'
+import axios from 'axios'
 
 const Login = () => {
   const { handleSubmit, errors, register } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
+    console.log(data)
+    const userData = data
+    fetch('http://localhost:5000/api/customers/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((loginResult) => {
+        return console.log('success', userData)
+      })
+      .catch((err) => {
+        return console.log(err)
+      })
+  }
 
   return (
     <form className="registration-form" onSubmit={handleSubmit(onSubmit)}>
@@ -50,7 +67,7 @@ const Login = () => {
         <input type="checkbox" className="registration-form__checkbox" />
         <span className="registration-form__checkbox_customized"></span>
       </label>
-      <Button type='submit' text="log in" isLight size26357 fz18 mrt85/>
+      <Button type="submit" text="log in" isLight size26357 fz18 mrt85 />
     </form>
   )
 }

@@ -3,10 +3,10 @@ const queryCreator = require("../commonHelpers/queryCreator");
 const _ = require("lodash");
 
 exports.addSlide = (req, res, next) => {
-  Slider.findOne({ customId: req.body.customId }).then(slide => {
+  Slider.findOne({ customId: req.body.customId }).then((slide) => {
     if (slide) {
       res.status(400).json({
-        message: `Slide with customId '${slide.customId}' is already exists. cutomId must be unique.`
+        message: `Slide with customId '${slide.customId}' is already exists. cutomId must be unique.`,
       });
     } else {
       const slideData = _.cloneDeep(req.body);
@@ -20,10 +20,10 @@ exports.addSlide = (req, res, next) => {
 
       newSlide
         .save()
-        .then(slide => res.json(slide))
-        .catch(err =>
+        .then((slide) => res.json(slide))
+        .catch((err) =>
           res.status(400).json({
-            message: `Error happened on server: "${err}" `
+            message: `Error happened on server: "${err}" `,
           })
         );
     }
@@ -32,10 +32,10 @@ exports.addSlide = (req, res, next) => {
 
 exports.updateSlide = (req, res, next) => {
   Slider.findOne({ customId: req.params.customId })
-    .then(slide => {
+    .then((slide) => {
       if (!slide) {
         return res.status(400).json({
-          message: `Slide with customId "${req.params.customId}" is not found.`
+          message: `Slide with customId "${req.params.customId}" is not found.`,
         });
       } else {
         const slideData = _.cloneDeep(req.body);
@@ -49,42 +49,42 @@ exports.updateSlide = (req, res, next) => {
           .populate("product")
           .populate("category")
           .populate("customer")
-          .then(slide => res.json(slide))
-          .catch(err =>
+          .then((slide) => res.json(slide))
+          .catch((err) =>
             res.status(400).json({
-              message: `Error happened on server: "${err}" `
+              message: `Error happened on server: "${err}" `,
             })
           );
       }
     })
-    .catch(err =>
+    .catch((err) =>
       res.status(400).json({
-        message: `Error happened on server: "${err}" `
+        message: `Error happened on server: "${err}" `,
       })
     );
 };
 
 exports.deleteSlide = (req, res, next) => {
-  Slider.findOne({ customId: req.params.customId }).then(async slide => {
+  Slider.findOne({ customId: req.params.customId }).then(async (slide) => {
     if (!slide) {
       return res.status(400).json({
-        message: `Slide with customId "${req.params.customId}" is not found.`
+        message: `Slide with customId "${req.params.customId}" is not found.`,
       });
     } else {
       const slideToDelete = await Slider.findOne({
-        customId: req.params.customId
+        customId: req.params.customId,
       });
 
       Slider.deleteOne({ customId: req.params.customId })
-        .then(deletedCount =>
+        .then((deletedCount) =>
           res.status(200).json({
             message: `Slide witn customId "${slideToDelete.customId}" is successfully deletes from DB.`,
-            deletedSlideInfo: slideToDelete
+            deletedSlideInfo: slideToDelete,
           })
         )
-        .catch(err =>
+        .catch((err) =>
           res.status(400).json({
-            message: `Error happened on server: "${err}" `
+            message: `Error happened on server: "${err}" `,
           })
         );
     }
@@ -92,14 +92,19 @@ exports.deleteSlide = (req, res, next) => {
 };
 
 exports.getSlides = (req, res, next) => {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+
+
   Slider.find()
     .populate("product")
     .populate("category")
     .populate("customer")
-    .then(slides => res.status(200).json(slides))
-    .catch(err =>
+    .then((slides) => res.status(200).json(slides))
+    .catch((err) =>
       res.status(400).json({
-        message: `Error happened on server: "${err}" `
+        message: `Error happened on server: "${err}" `,
       })
     );
 };

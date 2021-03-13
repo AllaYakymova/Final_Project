@@ -11,129 +11,10 @@
 
 <button class="btn save-prod">Save Products</button>
 <button class="btn get-prod">get Products</button>
+
+<button class="btn save-slider">Save Slider</button>
+<button class="btn get-slider">get slider</button>
 <script>
-
-    let data  = [
-        {
-            id: "men-clothing-jackets-and-coats",
-            name: "jackets-and-coats",
-            parentId: "men-clothing",
-            categoryId: 21
-        },
-        {
-            id: "men-clothing-jeans",
-            name: "jeans",
-            parentId: "men-clothing",
-            categoryId: 22
-        },
-        {
-            id: "men-clothing-sweaters",
-            name: "sweaters",
-            parentId: "men-clothing",
-            categoryId: 23
-        },
-        {
-            id: "men-accessories-belts",
-            name: "belts",
-            parentId: "men-accessories",
-            categoryId: 31
-        },
-        {
-            id: "men-accessories-bags",
-            name: "bags",
-            parentId: "men-accessories",
-            categoryId: 32
-        },
-        {
-            id: "men-accessories-scarves",
-            name: "scarves",
-            parentId: "men-accessories",
-            categoryId: 33
-        },
-        {
-            id: "women-clothing-dresses",
-            name: "dresses",
-            parentId: "women-clothing",
-            categoryId: 41
-        },
-        {
-            id: "women-clothing-jackets-and-coats",
-            name: "jackets-and-coats",
-            parentId: "women-clothing",
-            categoryId: 42
-        },
-        {
-            id: "women-clothing-jeans",
-            name: "jeans",
-            parentId: "women-clothing",
-            categoryId: 43
-        },
-        {
-            id: "women-accessories-bags",
-            name: "bags",
-            parentId: "women-accessories",
-            categoryId: 51
-        },
-        {
-            id: "women-accessories-scarves",
-            name: "scarves",
-            parentId: "women-accessories",
-            categoryId: 52
-        },
-        {
-            id: "women-accessories-belts",
-            name: "belts",
-            parentId: "women-accessories",
-            categoryId: 53
-        }
-    ];
-
-    let products = [
-            {
-                "enabled": true,
-                "categoryId": 21,
-                "imageUrls": [
-                    "https://res.cloudinary.com/originalite/image/upload/v1609866183/hmgoepprod_jcglli.jpg",
-                    "https://res.cloudinary.com/originalite/image/upload/v1609866137/hmgoepprod_ompv63.jpg"
-                ],
-                "quantity": 156,
-                "name": "Twill Shirt Jacket",
-                "currentPrice": 34.99,
-                "previousPrice": 50.00,
-                "categories": "men",
-                "color": "Beige",
-                "productUrl": "/men",
-                "itemNo": "0941151001",
-                "sizes": ["xs", "s", "m", "l", "xl", "xxl"],
-                "oneMoreCustomParam": {
-                    "description": "Shirt jacket in soft cotton twill. Collar, zipper at front, and chest pockets with flap and concealed snap fasteners. Long sleeves with plackets and button at cuffs. Unlined.",
-                    "rate": 4.8,
-                    "likes": 20
-                }
-            },
-        {
-            "enabled": true,
-            "categoryId": 21,
-            "imageUrls": [
-                "https://res.cloudinary.com/originalite/image/upload/v1609866243/hmgoepprod_h0xnel.jpg",
-                "https://res.cloudinary.com/originalite/image/upload/v1609866275/hmgoepprod_mttctj.jpg"
-            ],
-            "quantity": 156,
-            "name": "Twill Shirt Jacket",
-            "currentPrice": 34.99,
-            "previousPrice": 50.00,
-            "categories": "men",
-            "color": "Dark navy blue",
-            "productUrl": "/men",
-            "itemNo": "0941151002",
-            "sizes": ["xs", "s", "m", "l", "xl", "xxl"],
-            "oneMoreCustomParam": {
-                "description": "Shirt jacket in soft cotton twill. Collar, zipper at front, and chest pockets with flap and concealed snap fasteners. Long sleeves with plackets and button at cuffs. Unlined.",
-                "rate": 4.8,
-                "likes": 20
-            }
-        }
-        ];
 
 
     let saveCatalog = document.querySelector('.save');
@@ -141,78 +22,121 @@
     let saveProducts = document.querySelector('.save-prod');
     let getProducts = document.querySelector('.get-prod');
 
-    let product = {
-        enabled: true,
-        categoryId: 21,
-        imageUrls: [
-            "https://res.cloudinary.com/originalite/image/upload/v1609866183/hmgoepprod_jcglli.jpg",
-            "https://res.cloudinary.com/originalite/image/upload/v1609866137/hmgoepprod_ompv63.jpg"
-        ],
+    let saveSlider = document.querySelector('.save-slider');
+    let getSlider = document.querySelector('.get-slider');
 
-        quantity: 156,
-        name: "Twill Shirt Jacket",
-        currentPrice: 34.99,
-        previousPrice: 50.00,
-       categories: "men",
-        color: "Beige",
-        productUrl: "/men",
-        itemNo: "0941151001",
-        sizes: ["xs", "s", "m", "l", "xl", "xxl"],
-        oneMoreCustomParam: {
-        description: "Shirt jacket in soft cotton twill. Collar, zipper at front, and chest pockets with flap and concealed snap fasteners. Long sleeves with plackets and button at cuffs. Unlined.",
-            rate: 4.8,
-        likes: 20
-         }
-         };
+    const slides = [
+        {
+            wrapperClass: 'slider__wrapper-new-collection',
+            customId: "promotion-new-collection",
+            title: 'new collection',
+            titleClass: 'slider__new-collection',
+            imageUrl: 'https://res.cloudinary.com/originalite/image/upload/v1611496513/photo_2021-01-24_15-54-15_twqhvl.jpg',
+            linkClass: 'slider__link slider__link__hover',
+        },
+        {
+            wrapperClass: 'slider__wrapper-sale',
+            customId: "promotion-season-sale",
+            title: 'end of season sale',
+            titleClass: 'slider__sale',
+            imageUrl: 'https://res.cloudinary.com/originalite/image/upload/v1611496513/photo_2021-01-24_15-54-25_pxo9ak.jpg',
+            linkClass:
+                'slider__link slider__link_sale slider__link__hover slider__link__hover_sale',
+        },
+        {
+            wrapperClass: 'slider__wrapper-enjoy',
+            customId: "promotion-clothing",
+            title: 'enjoy 70% off',
+            titleClass: 'slider__enjoy',
+            imageUrl: 'https://res.cloudinary.com/originalite/image/upload/v1611496513/photo_2021-01-24_15-54-22_hpewpo.jpg',
+            linkClass:
+                'slider__link slider__link_enjoy slider__link__hover slider__link__hover_enjoy'
+
+        }
+    ]
+
 
     console.log('worker');
 
-    saveCatalog.addEventListener('click', () => {
+    // saveCatalog.addEventListener('click', () => {
+    //     console.log('click_worker');
+    //
+    //     data.forEach(el =>
+    //     fetch('http://localhost:5000/api/catalog', {
+    //         method: 'POST',
+    //         body: JSON.stringify(el),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     }).catch((er) => {
+    //         console.error(er);
+    //     }));
+    // });
+    // getCatalog.addEventListener('click', () => {
+    //     console.log('click_worker');
+    //     fetch('http://localhost:5000/api/catalog')
+    //         .then((response) => {
+    //             console.log(response.json())
+    //             return response.json();
+    //         })
+    //         .then((res) => {
+    //             console.log(res)
+    //             console.log('res', res);
+    //         });
+    // });
+    //
+    // saveProducts.addEventListener('click', () => {
+    //     console.log('click_worker1');
+    //
+    //     products.forEach(el =>
+    //         fetch('http://localhost:5000/api/products', {
+    //             method: 'POST',
+    //             body: JSON.stringify(el),
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         }).catch((er) => {
+    //             console.error(er);
+    //         }));
+    // });
+    // getProducts.addEventListener('click', () => {
+    //     console.log('click_worker4');
+    //     fetch('http://localhost:5000/api/products')
+    //         .then((response) => {
+    //             console.log(response.json())
+    //             return response.json();
+    //         })
+    //         .then((res) => {
+    //             console.log(res)
+    //             console.log('res', res);
+    //         });
+    // });
+    const newSlide = {
+        customId: "promotion-women-clothing",
+        imageUrl: "img/slider/001.png",
+        title: "Buy 2 dresses and get a third for free!",
+        description: "Do not miss our hot offer. Promotion ends 10/30/2019",
+        category: "5d99f68e419d040eec0f722c"
+    };
+    saveSlider.addEventListener('click', () => {
         console.log('click_worker');
-
-        data.forEach(el =>
-        fetch('http://localhost:5000/api/catalog', {
+slides.forEach(el =>
+        fetch('http://localhost:5000/api/slides/', {
             method: 'POST',
             body: JSON.stringify(el),
             headers: {
                 'Content-Type': 'application/json',
+
             },
         }).catch((er) => {
             console.error(er);
         }));
-    });
-    getCatalog.addEventListener('click', () => {
-        console.log('click_worker');
-        fetch('http://localhost:5000/api/catalog')
-            .then((response) => {
-                console.log(response.json())
-                return response.json();
-            })
-            .then((res) => {
-                console.log(res)
-                console.log('res', res);
-            });
-    });
-
-    saveProducts.addEventListener('click', () => {
-        console.log('click_worker1');
-
-        products.forEach(el =>
-            fetch('http://localhost:5000/api/products', {
-                method: 'POST',
-                body: JSON.stringify(el),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }).catch((er) => {
-                console.error(er);
-            }));
-    });
-    getProducts.addEventListener('click', () => {
+    })
+    getSlider.addEventListener('click', () => {
         console.log('click_worker4');
-        fetch('http://localhost:5000/api/products')
+        fetch('http://localhost:5000/api/slides')
             .then((response) => {
-                console.log(response.json())
+
                 return response.json();
             })
             .then((res) => {
@@ -220,6 +144,8 @@
                 console.log('res', res);
             });
     });
+
+
 </script>
 </body>
 </html>

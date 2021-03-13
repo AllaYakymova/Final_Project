@@ -5,17 +5,45 @@ import Button from '../details/Button/Button'
 const Registration = () => {
   const { handleSubmit, errors, register } = useForm()
 
-  const onSubmit = (data) => {
-    delete data.confirm
-    console.log(data)
+  const newCustomer = {
+    firstName: 'Customer',
+    lastName: 'Newone',
+    login: 'Customer',
+    email: 'customer@gmail.com',
+    password: '1111111',
+    telephone: '+380630000000',
+    gender: 'male',
+    avatarUrl: 'img/customers/023648.png',
+    isAdmin: true,
+    enabled: true
   }
 
+  const onSubmit = (data) => {
+    console.log(data)
+    // delete data.confirm
+    // data.login = data.email
+    // data.enabled = true
+    // data.isAdmin = false
+    // console.log(data)
+    fetch('http://localhost:5000/api/customers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  onSubmit(newCustomer)
+
   return (
-    <form className="registration-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="registration-form">
       <label className="registration-form__label">
         first name
         <input
-          name="name"
+          name="firstName"
           className="registration-form__input"
           ref={register({
             required: 'Your first name is required',
@@ -34,7 +62,7 @@ const Registration = () => {
       <label className="registration-form__label">
         second name
         <input
-          name="secondName"
+          name="lastName"
           className="registration-form__input"
           ref={register({
             required: 'Your second name is required',
@@ -50,9 +78,8 @@ const Registration = () => {
       {errors.secondName?.message && (
         <p className="registration-form__error">{errors.secondName?.message}</p>
       )}
-
       <label className="registration-form__label">
-        email adress
+        email address
         <input
           name="email"
           className="registration-form__input"
@@ -100,10 +127,11 @@ const Registration = () => {
           })}
         />
       </label>
+
       {errors.confirm?.type === 'confirm' && (
         <p className="registration-form__error">Your passwords don't match</p>
       )}
-      <Button type='submit' text="register" isLight size26357 fz18 mrt85 />
+      <Button type="submit" text="register" isLight size26357 fz18 mrt85 />
     </form>
   )
 }
